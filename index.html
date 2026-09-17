@@ -154,12 +154,14 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: color 0.2s ease;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--primary-orange-light);
+      text-shadow: 0 0 14px rgba(255, 85, 0, 0.6);
     }
 
     .btn-talk {
@@ -181,13 +183,14 @@
 
     .btn-talk:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(255, 85, 0, 0.6);
+      box-shadow: 0 6px 25px var(--primary-orange);
     }
 
     /* Common Section Styles */
     section {
       padding: 120px 0;
       position: relative;
+      scroll-margin-top: 90px;
     }
 
     /* Pulsing Glowing Dot Animation (Continuous Radar Glow) */
@@ -1825,7 +1828,7 @@
           <span>&lt;/&gt;</span> CAIO VICTOR
         </a>
         <ul class="nav-links">
-          <li><a href="#home">Início</a></li>
+          <li><a href="#home" class="active">Início</a></li>
           <li><a href="#about">Sobre</a></li>
           <li><a href="#stack">Tecnologias</a></li>
           <li><a href="#projects">Projetos</a></li>
@@ -2844,9 +2847,77 @@
     window.addEventListener('wheel', calculateTargetFrame, { passive: true });
     window.addEventListener('touchmove', calculateTargetFrame, { passive: true });
 
+    // -------------------------------------------------------------
+    // ACTIVE NAVBAR LINK (CLICK & SCROLLSPY)
+    // -------------------------------------------------------------
+    function initActiveNavSpy() {
+      const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+      const sections = [];
+
+      navLinks.forEach(link => {
+        const id = link.getAttribute('href').slice(1);
+        const section = document.getElementById(id);
+        if (section) {
+          sections.push({ id, link, section });
+        }
+      });
+
+      if (sections.length === 0) return;
+
+      let isClickScrolling = false;
+      let clickTimeout = null;
+
+      function setActive(activeLink) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          setActive(this);
+          isClickScrolling = true;
+          clearTimeout(clickTimeout);
+          clickTimeout = setTimeout(() => {
+            isClickScrolling = false;
+            updateActiveOnScroll();
+          }, 800);
+        });
+      });
+
+      function updateActiveOnScroll() {
+        if (isClickScrolling) return;
+
+        const scrollPosition = window.scrollY + 220;
+
+        // Se estiver no final da página, ativa o último item (Contato)
+        if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 70) {
+          setActive(sections[sections.length - 1].link);
+          return;
+        }
+
+        let current = sections[0];
+        for (let i = 0; i < sections.length; i++) {
+          const sectionTop = sections[i].section.offsetTop;
+          if (scrollPosition >= sectionTop) {
+            current = sections[i];
+          }
+        }
+
+        if (current) {
+          setActive(current.link);
+        }
+      }
+
+      window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
+      updateActiveOnScroll();
+    }
+
     // Launch
     init();
     initScrollReveal();
+    initActiveNavSpy();
     initRandomOrangeWordEffects();
     requestAnimationFrame(tick);
   </script>
