@@ -178,36 +178,134 @@
 
     .btn-talk:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(255, 85, 0, 0.6);
+      box-shadow: 0 6px 25px var(--primary-orange);
+    }
+
+    .nav-back-link {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 6px;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.25s ease !important;
+      font-size: 0.82rem !important;
+    }
+
+    .nav-back-link:hover {
+      color: var(--primary-orange-light) !important;
+      border-color: var(--primary-orange) !important;
+      background: rgba(255, 85, 0, 0.12) !important;
+      box-shadow: 0 0 16px rgba(255, 85, 0, 0.35) !important;
+      transform: translateX(-3px);
+    }
+
+    .nav-back-link svg {
+      transition: transform 0.2s ease;
+    }
+
+    .nav-back-link:hover svg {
+      transform: translateX(-2px);
+    }
+
+    /* Fluid Scroll Reveal */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-item.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Common Section Styles */
     section {
       padding: 120px 0;
       position: relative;
+      scroll-margin-top: 90px;
     }
 
     .section-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-family: var(--font-mono);
       font-size: 0.85rem;
       font-weight: 700;
-      color: #ffa066;
+      color: var(--primary-orange-light);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+      letter-spacing: 2.5px;
+      margin-bottom: 14px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
 
     .section-tag::before {
       content: '';
+      display: inline-block;
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #ffa066;
-      box-shadow: 0 0 10px #ffa066;
+      background: var(--primary-orange);
+      box-shadow: 0 0 10px var(--primary-orange);
+      animation: pulse-ring 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.8), 0 0 8px #ff5500;
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 85, 0, 0), 0 0 14px #ff7722;
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 85, 0, 0), 0 0 8px #ff5500;
+      }
+    }
+
+    /* Hero Top Navigation & Back Pill */
+    .hero-top-nav {
+      margin-bottom: 24px;
+    }
+
+    .back-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: rgba(18, 18, 26, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      color: #dedee8;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .back-pill-btn:hover {
+      color: #ffffff;
+      border-color: var(--primary-orange);
+      background: rgba(255, 85, 0, 0.12);
+      box-shadow: 0 0 25px rgba(255, 85, 0, 0.35);
+      transform: translateX(-4px);
+    }
+
+    .back-pill-btn svg {
+      transition: transform 0.25s ease;
+    }
+
+    .back-pill-btn:hover svg {
+      transform: translateX(-3px);
     }
 
     .section-title {
@@ -713,7 +811,7 @@
           <span>&lt;/&gt;</span> CAIO VICTOR
         </a>
         <ul class="nav-links">
-          <li><a href="index.html#home">Início</a></li>
+          <li><a href="index.html" class="nav-back-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Voltar ao Início</a></li>
           <li><a href="index.html#about">Sobre</a></li>
           <li><a href="index.html#stack">Tecnologias</a></li>
           <li><a href="projects.html" class="active">Projetos</a></li>
@@ -727,19 +825,28 @@
     <!-- SECTION 1: HERO / PAGE TITLE & CATEGORY FILTERS -->
     <section class="page-hero">
       <div class="container">
-        <div class="section-tag">TRABALHOS SELECIONADOS &amp; ESTUDOS DE CASO</div>
-        <h1 class="section-title">PROJETOS &amp; PORTFÓLIO</h1>
-        <p class="section-description">
-          Explore uma vitrine completa de aplicações web, interfaces interativas, plataformas de e-commerce e soluções full-stack desenvolvidas com engenharia front-end de alta performance.
+        <div class="hero-top-nav reveal-item">
+          <a href="index.html" class="back-pill-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Voltar para a Página Principal
+          </a>
+        </div>
+        <div class="section-tag reveal-item">PORTFÓLIO &amp; ENGENHARIA BACKEND</div>
+        <h1 class="section-title reveal-item">PROJETOS &amp; APLICAÇÕES</h1>
+        <p class="section-description reveal-item">
+          Explore os sistemas desenvolvidos por Caio Victor: prontuários digitais, integrações de APIs em tempo real, automações corporativas e plataformas escaláveis construídas com foco em arquitetura limpa e alta performance.
         </p>
 
         <!-- Category Filter Tabs -->
-        <div class="filter-tabs">
-          <button class="filter-btn active" onclick="filterProjects('all')">Todos os Projetos</button>
-          <button class="filter-btn" onclick="filterProjects('web-app')">Aplicações Web</button>
-          <button class="filter-btn" onclick="filterProjects('e-commerce')">E-Commerce</button>
-          <button class="filter-btn" onclick="filterProjects('ui-ux')">UI/UX &amp; Design</button>
-          <button class="filter-btn" onclick="filterProjects('saas')">Plataformas SaaS</button>
+        <div class="filter-tabs reveal-item">
+          <button class="filter-btn active" onclick="filterProjects(event, 'all')">Todos os Projetos</button>
+          <button class="filter-btn" onclick="filterProjects(event, 'backend')">Backend &amp; APIs</button>
+          <button class="filter-btn" onclick="filterProjects(event, 'web-app')">Aplicações Web</button>
+          <button class="filter-btn" onclick="filterProjects(event, 'saas')">Sistemas &amp; RH</button>
+          <button class="filter-btn" onclick="filterProjects(event, 'devops')">Arquitetura &amp; Infra</button>
         </div>
       </div>
     </section>
@@ -749,10 +856,10 @@
       <div class="container">
         <div class="projects-grid" id="projects-container">
 
-          <!-- Project 1 -->
-          <div class="project-card" data-category="web-app saas">
+          <!-- Project 1: NAPNE Digital -->
+          <div class="project-card reveal-item" data-category="backend web-app">
             <div class="project-preview">
-              <span class="preview-badge">DESTAQUE</span>
+              <span class="preview-badge">DESTAQUE • EM PRODUÇÃO</span>
               <div class="mockup-window">
                 <div class="mockup-dots">
                   <div class="dot dot-red"></div>
@@ -760,57 +867,59 @@
                   <div class="dot dot-green"></div>
                 </div>
                 <div class="mockup-content-skeleton">
-                  <div class="skeleton-bar" style="width: 40%;"></div>
-                  <div class="skeleton-bar" style="width: 90%;"></div>
-                  <div class="skeleton-bar" style="width: 70%;"></div>
+                  <div class="skeleton-bar" style="width: 55%; background: rgba(255, 85, 0, 0.45);"></div>
                   <div class="skeleton-bar" style="width: 85%;"></div>
+                  <div class="skeleton-bar" style="width: 72%;"></div>
+                  <div class="skeleton-bar" style="width: 90%;"></div>
                 </div>
               </div>
             </div>
             <div class="project-body">
               <div class="project-header-info">
-                <h2 class="project-name">Analytics Dashboard Pro</h2>
+                <h2 class="project-name">NAPNE Digital</h2>
                 <p class="project-summary">
-                  Dashboard de telemetria em tempo real com gráficos personalizáveis, rastreamento automático de métricas, modo escuro e exportação de dados.
+                  Prontuário eletrônico e sistema de acompanhamento multidisciplinar para estudantes com necessidades educacionais específicas desenvolvido para o IFMS.
                 </p>
                 <ul class="feature-list">
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Atualizações de telemetria em tempo real via WebSockets
+                    APIs RESTful em FastAPI com validação rigorosa Pydantic e SQLAlchemy
                   </li>
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Widgets de dashboard personalizáveis por drag-and-drop
+                    Controle de acesso baseado em funções (RBAC) com autenticação JWT
                   </li>
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Exportação de relatórios em PDF, CSV e JSON
+                    Interface reativa com React, TypeScript, Tailwind CSS e geração de prontuários
                   </li>
                 </ul>
                 <div class="project-tags">
+                  <span class="tag-badge">FastAPI</span>
+                  <span class="tag-badge">Python</span>
+                  <span class="tag-badge">SQLAlchemy</span>
                   <span class="tag-badge">React</span>
                   <span class="tag-badge">TypeScript</span>
-                  <span class="tag-badge">Recharts</span>
-                  <span class="tag-badge">Tailwind CSS</span>
+                  <span class="tag-badge">JWT</span>
                 </div>
               </div>
               <div class="project-actions">
-                <a href="#" class="btn-card-primary" onclick="alert('Abrindo Demo Online...'); return false;">Demo Ao Vivo &rarr;</a>
-                <a href="#" class="btn-card-secondary" onclick="alert('Abrindo Código Fonte...'); return false;">Repositório GitHub</a>
+                <a href="https://github.com/Caiokl3i/Napne-Digital" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Repositório GitHub &rarr;</a>
+                <a href="https://github.com/Caiokl3i/Napne-Digital#readme" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">Documentação Técnica</a>
               </div>
             </div>
           </div>
 
-          <!-- Project 2 -->
-          <div class="project-card" data-category="e-commerce">
+          <!-- Project 2: SYN RH -->
+          <div class="project-card reveal-item" data-category="backend web-app saas">
             <div class="project-preview">
-              <span class="preview-badge">E-COMMERCE</span>
+              <span class="preview-badge">SISTEMA CORPORATIVO</span>
               <div class="mockup-window">
                 <div class="mockup-dots">
                   <div class="dot dot-red"></div>
@@ -818,170 +927,58 @@
                   <div class="dot dot-green"></div>
                 </div>
                 <div class="mockup-content-skeleton">
-                  <div class="skeleton-bar" style="width: 50%;"></div>
+                  <div class="skeleton-bar" style="width: 45%; background: rgba(255, 119, 34, 0.45);"></div>
                   <div class="skeleton-bar" style="width: 80%;"></div>
-                  <div class="skeleton-bar" style="width: 60%;"></div>
+                  <div class="skeleton-bar" style="width: 65%;"></div>
+                  <div class="skeleton-bar" style="width: 88%;"></div>
                 </div>
               </div>
             </div>
             <div class="project-body">
               <div class="project-header-info">
-                <h2 class="project-name">NextCart Plataforma E-Commerce</h2>
+                <h2 class="project-name">SYN RH</h2>
                 <p class="project-summary">
-                  Experiência de e-commerce completa com busca instantânea, filtros dinâmicos de categoria, carrinho persistente e checkout Stripe.
+                  Plataforma corporativa para automação de rotinas de departamento pessoal, consolidação de jornadas de trabalho e apontamento de ponto.
                 </p>
                 <ul class="feature-list">
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Integração completa com checkout seguro Stripe
+                    Arquitetura em camadas e serviços modulares em Node.js com TypeScript
                   </li>
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Sistema de busca instantânea e filtros facetados
+                    Banco relacional PostgreSQL com transações atômicas (ACID) para dados de ponto
                   </li>
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Renderização no servidor (SSR) otimizada com Next.js
+                    Ambiente totalmente conteinerizado com Docker garantindo paridade dev-prod
                   </li>
                 </ul>
                 <div class="project-tags">
-                  <span class="tag-badge">Next.js</span>
-                  <span class="tag-badge">TypeScript</span>
-                  <span class="tag-badge">Stripe</span>
-                  <span class="tag-badge">Tailwind</span>
-                </div>
-              </div>
-              <div class="project-actions">
-                <a href="#" class="btn-card-primary" onclick="alert('Abrindo Demo Online...'); return false;">Demo Ao Vivo &rarr;</a>
-                <a href="#" class="btn-card-secondary" onclick="alert('Abrindo Código Fonte...'); return false;">Repositório GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card" data-category="saas web-app">
-            <div class="project-preview">
-              <span class="preview-badge">IA / SAAS</span>
-              <div class="mockup-window">
-                <div class="mockup-dots">
-                  <div class="dot dot-red"></div>
-                  <div class="dot dot-yellow"></div>
-                  <div class="dot dot-green"></div>
-                </div>
-                <div class="mockup-content-skeleton">
-                  <div class="skeleton-bar" style="width: 60%;"></div>
-                  <div class="skeleton-bar" style="width: 75%;"></div>
-                  <div class="skeleton-bar" style="width: 50%;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-body">
-              <div class="project-header-info">
-                <h2 class="project-name">OmniSaaS AI Suite</h2>
-                <p class="project-summary">
-                  Plataforma SaaS com inteligência artificial generativa, animação em canvas guiada por scroll e gestão de workspaces em equipe.
-                </p>
-                <ul class="feature-list">
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Integração com API da OpenAI para fluxos generativos
-                  </li>
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Animação interativa em canvas impulsionada por scroll
-                  </li>
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Gestão e autorização de múltiplos ambientes (multi-tenant)
-                  </li>
-                </ul>
-                <div class="project-tags">
-                  <span class="tag-badge">React</span>
                   <span class="tag-badge">Node.js</span>
-                  <span class="tag-badge">OpenAI</span>
-                  <span class="tag-badge">GSAP</span>
-                </div>
-              </div>
-              <div class="project-actions">
-                <a href="#" class="btn-card-primary" onclick="alert('Abrindo Demo Online...'); return false;">Demo Ao Vivo &rarr;</a>
-                <a href="#" class="btn-card-secondary" onclick="alert('Abrindo Código Fonte...'); return false;">Repositório GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="project-card" data-category="web-app">
-            <div class="project-preview">
-              <span class="preview-badge">FERRAMENTA DEV</span>
-              <div class="mockup-window">
-                <div class="mockup-dots">
-                  <div class="dot dot-red"></div>
-                  <div class="dot dot-yellow"></div>
-                  <div class="dot dot-green"></div>
-                </div>
-                <div class="mockup-content-skeleton">
-                  <div class="skeleton-bar" style="width: 45%;"></div>
-                  <div class="skeleton-bar" style="width: 85%;"></div>
-                  <div class="skeleton-bar" style="width: 65%;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-body">
-              <div class="project-header-info">
-                <h2 class="project-name">DevFlow Developer Hub</h2>
-                <p class="project-summary">
-                  Gerenciador de snippets de código na nuvem com destaque de sintaxe, atalhos de teclado, organização por tags e sincronização em tempo real.
-                </p>
-                <ul class="feature-list">
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Editor com destaque de sintaxe e formatação automática
-                  </li>
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Sincronização na nuvem em tempo real com Supabase
-                  </li>
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Paleta de comandos rápida (Cmd + K)
-                  </li>
-                </ul>
-                <div class="project-tags">
-                  <span class="tag-badge">Vue.js</span>
                   <span class="tag-badge">TypeScript</span>
-                  <span class="tag-badge">Supabase</span>
-                  <span class="tag-badge">Tailwind</span>
+                  <span class="tag-badge">PostgreSQL</span>
+                  <span class="tag-badge">REST APIs</span>
+                  <span class="tag-badge">Docker</span>
                 </div>
               </div>
               <div class="project-actions">
-                <a href="#" class="btn-card-primary" onclick="alert('Abrindo Demo Online...'); return false;">Demo Ao Vivo &rarr;</a>
-                <a href="#" class="btn-card-secondary" onclick="alert('Abrindo Código Fonte...'); return false;">Repositório GitHub</a>
+                <a href="index.html#contact" class="btn-card-primary">Solicitar Apresentação &rarr;</a>
+                <a href="index.html#experience" class="btn-card-secondary">Ver Trajetória</a>
               </div>
             </div>
           </div>
 
-          <!-- Project 5 -->
-          <div class="project-card" data-category="web-app saas">
+          <!-- Project 3: CRM WhatsApp -->
+          <div class="project-card reveal-item" data-category="backend web-app">
             <div class="project-preview">
-              <span class="preview-badge">FINTECH</span>
+              <span class="preview-badge">INTEGRAÇÃO &amp; ATENDIMENTO</span>
               <div class="mockup-window">
                 <div class="mockup-dots">
                   <div class="dot dot-red"></div>
@@ -989,105 +986,229 @@
                   <div class="dot dot-green"></div>
                 </div>
                 <div class="mockup-content-skeleton">
-                  <div class="skeleton-bar" style="width: 55%;"></div>
-                  <div class="skeleton-bar" style="width: 80%;"></div>
-                  <div class="skeleton-bar" style="width: 70%;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-body">
-              <div class="project-header-info">
-                <h2 class="project-name">CryptoVault Tracker</h2>
-                <p class="project-summary">
-                  Rastreador de carteira de criptomoedas em tempo real com cotações via WebSockets, cálculos de lucro/prejuízo (PnL) e gráficos financeiros.
-                </p>
-                <ul class="feature-list">
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Ticker de cotações em tempo real via WebSockets
-                  </li>
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Gráficos financeiros interativos com Chart.js
-                  </li>
-                  <li>
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    Cálculo de lucro/prejuízo (PnL) e suporte a múltiplas moedas
-                  </li>
-                </ul>
-                <div class="project-tags">
-                  <span class="tag-badge">React</span>
-                  <span class="tag-badge">WebSockets</span>
-                  <span class="tag-badge">Chart.js</span>
-                  <span class="tag-badge">CSS Modules</span>
-                </div>
-              </div>
-              <div class="project-actions">
-                <a href="#" class="btn-card-primary" onclick="alert('Abrindo Demo Online...'); return false;">Demo Ao Vivo &rarr;</a>
-                <a href="#" class="btn-card-secondary" onclick="alert('Abrindo Código Fonte...'); return false;">Repositório GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6 -->
-          <div class="project-card" data-category="ui-ux">
-            <div class="project-preview">
-              <span class="preview-badge">DESIGN SYSTEM</span>
-              <div class="mockup-window">
-                <div class="mockup-dots">
-                  <div class="dot dot-red"></div>
-                  <div class="dot dot-yellow"></div>
-                  <div class="dot dot-green"></div>
-                </div>
-                <div class="mockup-content-skeleton">
-                  <div class="skeleton-bar" style="width: 35%;"></div>
+                  <div class="skeleton-bar" style="width: 50%; background: rgba(255, 85, 0, 0.4);"></div>
+                  <div class="skeleton-bar" style="width: 75%;"></div>
                   <div class="skeleton-bar" style="width: 90%;"></div>
-                  <div class="skeleton-bar" style="width: 65%;"></div>
+                  <div class="skeleton-bar" style="width: 60%;"></div>
                 </div>
               </div>
             </div>
             <div class="project-body">
               <div class="project-header-info">
-                <h2 class="project-name">DesignSystem UI Kit</h2>
+                <h2 class="project-name">CRM WhatsApp</h2>
                 <p class="project-summary">
-                  Biblioteca de componentes UI acessíveis e especificações de design tokens para escalar aplicações enterprise com alto padrão de qualidade.
+                  Sistema de atendimento multiusuário com comunicação direta e sincronizada via API do WhatsApp, histórico unificado e gestão de filas.
                 </p>
                 <ul class="feature-list">
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Mais de 40 componentes acessíveis (conformidade WCAG AA)
+                    Webhooks assíncronos e processamento em background de mensagens e disparos
                   </li>
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Documentação no Storybook e arquitetura de design tokens
+                    Distribuição automática de clientes, métricas de tempo de resposta e histórico
                   </li>
                   <li>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    Suporte nativo a temas claro e escuro
+                    Painel administrativo reativo com React, autenticação JWT e PostgreSQL
                   </li>
                 </ul>
                 <div class="project-tags">
-                  <span class="tag-badge">HTML5</span>
-                  <span class="tag-badge">Sass</span>
-                  <span class="tag-badge">Storybook</span>
-                  <span class="tag-badge">Figma</span>
+                  <span class="tag-badge">Node.js</span>
+                  <span class="tag-badge">Express</span>
+                  <span class="tag-badge">PostgreSQL</span>
+                  <span class="tag-badge">React</span>
+                  <span class="tag-badge">JWT</span>
+                  <span class="tag-badge">WebSockets</span>
                 </div>
               </div>
               <div class="project-actions">
-                <a href="#" class="btn-card-primary" onclick="alert('Abrindo Storybook...'); return false;">Storybook &rarr;</a>
-                <a href="#" class="btn-card-secondary" onclick="alert('Abrindo Arquivo Figma...'); return false;">Especificação Figma</a>
+                <a href="index.html#contact" class="btn-card-primary">Conversar sobre o Projeto &rarr;</a>
+                <a href="index.html#stack" class="btn-card-secondary">Stack Tecnológica</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Diário de Horas Extras -->
+          <div class="project-card reveal-item" data-category="backend web-app saas">
+            <div class="project-preview">
+              <span class="preview-badge">APURAÇÃO &amp; COMPLIANCE</span>
+              <div class="mockup-window">
+                <div class="mockup-dots">
+                  <div class="dot dot-red"></div>
+                  <div class="dot dot-yellow"></div>
+                  <div class="dot dot-green"></div>
+                </div>
+                <div class="mockup-content-skeleton">
+                  <div class="skeleton-bar" style="width: 60%; background: rgba(255, 119, 34, 0.4);"></div>
+                  <div class="skeleton-bar" style="width: 82%;"></div>
+                  <div class="skeleton-bar" style="width: 70%;"></div>
+                  <div class="skeleton-bar" style="width: 88%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-header-info">
+                <h2 class="project-name">Diário de Horas Extras</h2>
+                <p class="project-summary">
+                  Aplicação especializada para apuração detalhada, registro seguro e homologação de horas suplementares e banco de horas corporativo.
+                </p>
+                <ul class="feature-list">
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Desenvolvido com AdonisJS aproveitando o ORM Lucid e validação de regras trabalhistas
+                  </li>
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Relatórios analíticos mensais com consolidação e exportação estruturada
+                  </li>
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Interface intuitiva com controle de prazos e fluxo de aprovação por gestores
+                  </li>
+                </ul>
+                <div class="project-tags">
+                  <span class="tag-badge">AdonisJS</span>
+                  <span class="tag-badge">Lucid ORM</span>
+                  <span class="tag-badge">Node.js</span>
+                  <span class="tag-badge">React</span>
+                  <span class="tag-badge">PostgreSQL</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="index.html#contact" class="btn-card-primary">Ver Casos de Uso &rarr;</a>
+                <a href="index.html#experience" class="btn-card-secondary">Experiência Profissional</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: API Gateway & Microsserviços -->
+          <div class="project-card reveal-item" data-category="backend devops">
+            <div class="project-preview">
+              <span class="preview-badge">INFRA &amp; PERFORMANCE</span>
+              <div class="mockup-window">
+                <div class="mockup-dots">
+                  <div class="dot dot-red"></div>
+                  <div class="dot dot-yellow"></div>
+                  <div class="dot dot-green"></div>
+                </div>
+                <div class="mockup-content-skeleton">
+                  <div class="skeleton-bar" style="width: 40%; background: rgba(255, 85, 0, 0.5);"></div>
+                  <div class="skeleton-bar" style="width: 88%;"></div>
+                  <div class="skeleton-bar" style="width: 68%;"></div>
+                  <div class="skeleton-bar" style="width: 78%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-header-info">
+                <h2 class="project-name">API Gateway &amp; Microsserviços</h2>
+                <p class="project-summary">
+                  Camada centralizada para roteamento inteligente, autenticação unificada, cache em memória e controle de tráfego de alta disponibilidade.
+                </p>
+                <ul class="feature-list">
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Rate limiting, throttling dinâmico e proteção de endpoints contra abusos
+                  </li>
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Cache distribuído com Redis garantindo latência sub-milissegundo para queries quentes
+                  </li>
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Orquestração de microsserviços com Docker Compose, Nginx e logging estruturado
+                  </li>
+                </ul>
+                <div class="project-tags">
+                  <span class="tag-badge">Node.js</span>
+                  <span class="tag-badge">Redis</span>
+                  <span class="tag-badge">Docker</span>
+                  <span class="tag-badge">PostgreSQL</span>
+                  <span class="tag-badge">Linux</span>
+                  <span class="tag-badge">Nginx</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="index.html#contact" class="btn-card-primary">Consultar Arquitetura &rarr;</a>
+                <a href="index.html#stack" class="btn-card-secondary">Ver Tecnologias</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Dashboard de Métricas & BI -->
+          <div class="project-card reveal-item" data-category="backend web-app">
+            <div class="project-preview">
+              <span class="preview-badge">TELEMETRIA &amp; CONSULTAS</span>
+              <div class="mockup-window">
+                <div class="mockup-dots">
+                  <div class="dot dot-red"></div>
+                  <div class="dot dot-yellow"></div>
+                  <div class="dot dot-green"></div>
+                </div>
+                <div class="mockup-content-skeleton">
+                  <div class="skeleton-bar" style="width: 55%; background: rgba(255, 119, 34, 0.45);"></div>
+                  <div class="skeleton-bar" style="width: 85%;"></div>
+                  <div class="skeleton-bar" style="width: 60%;"></div>
+                  <div class="skeleton-bar" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-header-info">
+                <h2 class="project-name">Dashboard de Métricas &amp; BI</h2>
+                <p class="project-summary">
+                  Painel analítico para monitoramento de KPIs operacionais, auditoria de transações e visualização de grandes volumes de dados.
+                </p>
+                <ul class="feature-list">
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Consultas SQL complexas com agregações, views e índices otimizados para velocidade
+                  </li>
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Endpoints assíncronos em Python / FastAPI com serialização de alta vazão
+                  </li>
+                  <li>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Visualização dinâmica com gráficos responsivos e relatórios exportáveis
+                  </li>
+                </ul>
+                <div class="project-tags">
+                  <span class="tag-badge">Python</span>
+                  <span class="tag-badge">FastAPI</span>
+                  <span class="tag-badge">PostgreSQL</span>
+                  <span class="tag-badge">Chart.js</span>
+                  <span class="tag-badge">SQL Relacional</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="index.html#contact" class="btn-card-primary">Fale Comigo &rarr;</a>
+                <a href="index.html#projects" class="btn-card-secondary">Ver Prévia no Início</a>
               </div>
             </div>
           </div>
@@ -1099,42 +1220,42 @@
     <!-- SECTION 3: DEVELOPMENT PROCESS & METHODOLOGY -->
     <section id="methodology">
       <div class="container">
-        <div class="section-tag">NOSSA METODOLOGIA</div>
-        <h2 class="section-title">Como Construímos Projetos de Alto Impacto</h2>
-        <p class="section-description">
-          Um fluxo de engenharia disciplinado focado em clareza, performance, arquitetura limpa e excelente experiência do usuário.
+        <div class="section-tag reveal-item">METODOLOGIA DE DESENVOLVIMENTO</div>
+        <h2 class="section-title reveal-item">Como Arquitetamos e Construímos Sistemas</h2>
+        <p class="section-description reveal-item">
+          Um processo de engenharia disciplinado e fundamentado em boas práticas, código limpo, modelagem de dados consciente e segurança em cada camada.
         </p>
 
         <div class="process-grid">
-          <div class="glass-card process-card">
+          <div class="glass-card process-card reveal-item">
             <div class="step-number">01</div>
-            <h3 class="step-title">Descoberta &amp; Arquitetura</h3>
+            <h3 class="step-title">Modelagem de Dados &amp; Requisitos</h3>
             <p class="step-desc">
-              Análise detalhada dos requisitos, definição da stack tecnológica, modelagem de dados e arquitetura de sistemas antes de escrever código.
+              Definição minuciosa de entidades, relacionamentos estruturados, chaves estrangeiras, índices e regras de integridade relacional no PostgreSQL e SQLite.
             </p>
           </div>
 
-          <div class="glass-card process-card">
+          <div class="glass-card process-card reveal-item">
             <div class="step-number">02</div>
-            <h3 class="step-title">Design UI/UX &amp; Protótipos</h3>
+            <h3 class="step-title">Arquitetura de APIs &amp; Segurança</h3>
             <p class="step-desc">
-              Criação de sistemas de design acessíveis, wireframes interativos e estruturas de layout responsivas adaptadas às necessidades dos usuários.
+              Separação de responsabilidades em camadas, contratos REST consistentes, autenticação com JWT, controle por perfis (RBAC) e validação estrita de payloads.
             </p>
           </div>
 
-          <div class="glass-card process-card">
+          <div class="glass-card process-card reveal-item">
             <div class="step-number">03</div>
-            <h3 class="step-title">Desenvolvimento Limpo</h3>
+            <h3 class="step-title">Implementação Limpa &amp; Testes</h3>
             <p class="step-desc">
-              Código modular, tipado e de alta performance usando frameworks modernos (React, Next.js, TypeScript) seguindo boas práticas.
+              Código tipado e modular em Node.js (TypeScript) e Python, uso seguro de ORMs (SQLAlchemy, Lucid, Prisma), tratamento consistente de erros e testes.
             </p>
           </div>
 
-          <div class="glass-card process-card">
+          <div class="glass-card process-card reveal-item">
             <div class="step-number">04</div>
-            <h3 class="step-title">Testes &amp; Otimização</h3>
+            <h3 class="step-title">Conteinerização &amp; Deploy</h3>
             <p class="step-desc">
-              Auditorias de performance com Lighthouse, testes de compatibilidade entre navegadores e deploy contínuo (CI/CD) para máxima estabilidade.
+              Padronização de ambientes com Docker e Docker Compose, configuração de servidores Linux, controle de tráfego com Nginx e pipelines CI/CD.
             </p>
           </div>
         </div>
@@ -1144,35 +1265,35 @@
     <!-- SECTION 4: PROJECT METRICS & IMPACT -->
     <section id="metrics">
       <div class="container">
-        <div class="section-tag">RESULTADOS COMPROVADOS</div>
-        <h2 class="section-title">Padrões de Engenharia &amp; Impacto</h2>
-        <p class="section-description">
-          Principais indicadores de performance alcançados nas aplicações entregues.
+        <div class="section-tag reveal-item">PADRÕES &amp; CONFIABILIDADE</div>
+        <h2 class="section-title reveal-item">Qualidade e Segurança de Software</h2>
+        <p class="section-description reveal-item">
+          Diretrizes técnicas e princípios aplicados no desenvolvimento contínuo de aplicações estáveis e eficientes.
         </p>
 
         <div class="metrics-grid">
-          <div class="glass-card metric-card">
+          <div class="glass-card metric-card reveal-item">
             <div class="metric-value">99.9%</div>
-            <div class="metric-label">Disponibilidade &amp; Confiabilidade</div>
-            <div class="metric-subtext">Arquitetura em nuvem resiliente</div>
+            <div class="metric-label">Integridade de Dados</div>
+            <div class="metric-subtext">Transações ACID e validação estrita em cada camada</div>
           </div>
 
-          <div class="glass-card metric-card">
-            <div class="metric-value">&lt; 0.8s</div>
-            <div class="metric-label">Primeiro Carregamento</div>
-            <div class="metric-subtext">Pipeline de renderização otimizado</div>
+          <div class="glass-card metric-card reveal-item">
+            <div class="metric-value">&lt; 50ms</div>
+            <div class="metric-label">Tempo de Resposta em APIs</div>
+            <div class="metric-subtext">Queries SQL otimizadas e serialização eficiente</div>
           </div>
 
-          <div class="glass-card metric-card">
-            <div class="metric-value">98+</div>
-            <div class="metric-label">Pontuação no Lighthouse</div>
-            <div class="metric-subtext">Excelente SEO e performance</div>
-          </div>
-
-          <div class="glass-card metric-card">
+          <div class="glass-card metric-card reveal-item">
             <div class="metric-value">100%</div>
-            <div class="metric-label">Responsivo &amp; Acessível</div>
-            <div class="metric-subtext">Conformidade WCAG AA em todos os dispositivos</div>
+            <div class="metric-label">Ambientes com Docker</div>
+            <div class="metric-subtext">Infraestrutura reproduzível em Linux</div>
+          </div>
+
+          <div class="glass-card metric-card reveal-item">
+            <div class="metric-value">Clean Code</div>
+            <div class="metric-label">Código Modular &amp; Tipado</div>
+            <div class="metric-subtext">TypeScript, Python e padrões estruturados</div>
           </div>
         </div>
       </div>
@@ -1338,20 +1459,50 @@
     }
 
     // Project Category Filtering Logic
-    function filterProjects(category) {
+    function filterProjects(e, category) {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      if (e && e.currentTarget) {
+        e.currentTarget.classList.add('active');
+      } else if (e && e.target) {
+        e.target.classList.add('active');
+      }
 
       const cards = document.querySelectorAll('.project-card');
       cards.forEach(card => {
-        const cardCategories = card.getAttribute('data-category');
-        if (category === 'all' || cardCategories.includes(category)) {
+        const cardCategories = card.getAttribute('data-category') || '';
+        const cats = cardCategories.split(' ');
+        if (category === 'all' || cats.includes(category)) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
+    }
+
+    // -------------------------------------------------------------
+    // FLUID SCROLL REVEAL (INTERSECTION OBSERVER)
+    // -------------------------------------------------------------
+    function initScrollReveal() {
+      const revealItems = document.querySelectorAll('.reveal-item');
+      if (!('IntersectionObserver' in window)) {
+        revealItems.forEach(el => el.classList.add('is-revealed'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealItems.forEach(el => observer.observe(el));
     }
 
     // -------------------------------------------------------------
@@ -1456,7 +1607,7 @@
         const ty = Math.sin(angle) * distance - 12;
         
         const size = 3 + Math.random() * 5;
-        const colors = ['#ff5500', '#ffaa00', '#ffff00', '#ff8800', '#ffffff'];
+        const colors = ['#ff5500', '#ffaa00', '#ff7722', '#ff8800', '#ffffff'];
         const color = colors[Math.floor(Math.random() * colors.length)];
 
         spark.style.cssText = `
@@ -1496,6 +1647,7 @@
 
     // Launch
     init();
+    initScrollReveal();
     initRandomOrangeWordEffects();
     requestAnimationFrame(tick);
   </script>
