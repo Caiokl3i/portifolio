@@ -1316,6 +1316,15 @@
 
   <!-- FRAME ANIMATION CANVAS SCRIPT USING projects-jpg (150 FRAMES) -->
   <script>
+    // Garantir retorno ao topo ao recarregar/reiniciar a página
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0);
+    });
+
     const TOTAL_FRAMES = 150;
     const images = new Array(TOTAL_FRAMES + 1);
     const loadedStatus = new Array(TOTAL_FRAMES + 1).fill(false);

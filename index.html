@@ -2484,6 +2484,15 @@
 
   <!-- FRAME ANIMATION CANVAS SCRIPT -->
   <script>
+    // Garantir retorno ao topo ao recarregar/reiniciar a página
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0);
+    });
+
     const TOTAL_FRAMES = 300;
     const images = new Array(TOTAL_FRAMES + 1);
     const loadedStatus = new Array(TOTAL_FRAMES + 1).fill(false);
@@ -2674,8 +2683,7 @@
     // CONTACT CHANNEL SWITCHER (EMAIL / WHATSAPP)
     // -------------------------------------------------------------
     let currentContactChannel = 'whatsapp';
-    const CAIO_WHATSAPP_PHONE = ''; // Inserir número com DDD se desejar (ex: '5567999999999')
-
+    const CAIO_WHATSAPP_PHONE = '5567991598082';
     function setContactChannel(channel) {
       currentContactChannel = channel;
       const tabEmail = document.getElementById('tabEmail');
