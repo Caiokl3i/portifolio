@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos &amp; Estudos de Caso | Portfólio Devansh</title>
+  <title>Caio Victor | Projetos &amp; Aplicações</title>
+  <meta name="description" content="Projetos desenvolvidos por Caio Victor, desenvolvedor backend. Sistemas web, APIs, integrações e modelagem de banco de dados.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -91,18 +92,24 @@
       padding: 0 60px;
     }
 
-    /* Header / Navbar */
+    /* Navigation Bar */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 100;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(7, 7, 9, 0.75);
+      background: rgba(7, 7, 9, 0.95); /* darker and more robust at top */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s ease; /* smooth animation */
+    }
+
+    header.scrolled {
+      background: rgba(12, 12, 18, 0.4); /* glass-like transparent */
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--glass-border);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
 
     .nav-container {
@@ -279,8 +286,13 @@
        ------------------------------------------------------------- */
     .orange-word {
       display: inline-block;
+    }
+
+    .orange-char {
+      display: inline-block;
       cursor: pointer;
       position: relative;
+      text-shadow: 0 0 8px rgba(255, 85, 0, 0.5), 0 0 16px rgba(255, 85, 0, 0.3);
       transition: color 0.2s ease, text-shadow 0.2s ease;
       will-change: transform, filter, text-shadow;
     }
@@ -295,21 +307,21 @@
 
     @keyframes orangeFlipX {
       0% { transform: perspective(400px) rotateX(0deg); }
-      50% { transform: perspective(400px) rotateX(180deg) scale(1.25); text-shadow: 0 0 30px #00ffff, 0 0 50px #ff5500; color: #66ffff; }
+      50% { transform: perspective(400px) rotateX(180deg) scale(1.25); text-shadow: 0 0 30px #ff7700, 0 0 50px #ff5500; color: #ff9933; }
       100% { transform: perspective(400px) rotateX(360deg) scale(1); }
     }
 
     @keyframes orangeFlipY {
       0% { transform: perspective(400px) rotateY(0deg); }
-      50% { transform: perspective(400px) rotateY(180deg) scale(1.25); text-shadow: 0 0 30px #ff00ff, 0 0 50px #ff5500; color: #ff77ff; }
+      50% { transform: perspective(400px) rotateY(180deg) scale(1.25); text-shadow: 0 0 30px #ff8800, 0 0 50px #ff5500; color: #ffaa44; }
       100% { transform: perspective(400px) rotateY(360deg) scale(1); }
     }
 
     @keyframes orangeGlitchJitter {
       0% { transform: translate(0, 0) skew(0deg); }
-      20% { transform: translate(-4px, 3px) skew(-8deg); text-shadow: -4px 0 #00ffff, 4px 0 #ff0055, 0 0 20px #ff5500; color: #ffffff; }
-      40% { transform: translate(4px, -3px) skew(10deg); text-shadow: 4px 0 #00ffaa, -4px 0 #ffaa00; }
-      60% { transform: translate(-3px, -2px) skew(-4deg); text-shadow: -3px 0 #ff0055, 3px 0 #00ffff; }
+      20% { transform: translate(-4px, 3px) skew(-8deg); text-shadow: -4px 0 #ffaa00, 4px 0 #ff3300, 0 0 20px #ff5500; color: #ffffff; }
+      40% { transform: translate(4px, -3px) skew(10deg); text-shadow: 4px 0 #ff8800, -4px 0 #ff5500; }
+      60% { transform: translate(-3px, -2px) skew(-4deg); text-shadow: -3px 0 #ff3300, 3px 0 #ffaa00; }
       80% { transform: translate(2px, 2px) skew(3deg); }
       100% { transform: translate(0, 0) skew(0deg); }
     }
@@ -324,7 +336,7 @@
 
     @keyframes orangeSuperSpin {
       0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.4); text-shadow: 0 0 35px #ffff00, 0 0 65px #ff5500; color: #ffffaa; }
+      50% { transform: rotate(180deg) scale(1.4); text-shadow: 0 0 35px #ffaa00, 0 0 65px #ff5500; color: #ffcc55; }
       100% { transform: rotate(360deg) scale(1); }
     }
 
@@ -337,33 +349,33 @@
 
     @keyframes orangeElasticSqueeze {
       0% { transform: scale(1, 1); }
-      35% { transform: scale(0.65, 1.45) translateY(-8px); text-shadow: 0 0 30px #00ffaa, 0 0 50px #ff5500; color: #88ffcc; }
+      35% { transform: scale(0.65, 1.45) translateY(-8px); text-shadow: 0 0 30px #ffaa00, 0 0 50px #ff5500; color: #ffdd88; }
       65% { transform: scale(1.3, 0.8) translateY(2px); }
       100% { transform: scale(1, 1) translateY(0); }
     }
 
     @keyframes orangePulseShockwave {
       0% { transform: scale(1); }
-      50% { transform: scale(1.38); letter-spacing: 3px; text-shadow: 0 0 35px #ffffff, 0 0 70px #ff5500, 0 0 100px #ff2200; color: #ffffff; }
+      50% { transform: scale(1.38); letter-spacing: 3px; text-shadow: 0 0 35px #ffaa00, 0 0 70px #ff5500, 0 0 100px #ff2200; color: #ffffff; }
       100% { transform: scale(1); letter-spacing: normal; }
     }
 
     @keyframes orangeUpsidePop {
       0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-14px) rotate(180deg) scale(1.3); text-shadow: 0 0 30px #aaff00, 0 0 50px #ff5500; color: #ddff66; }
+      50% { transform: translateY(-14px) rotate(180deg) scale(1.3); text-shadow: 0 0 30px #ff8800, 0 0 50px #ff5500; color: #ffcc66; }
       100% { transform: translateY(0) rotate(360deg) scale(1); }
     }
 
-    .orange-word.effect-1 { animation: orangeRubberBounce 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-2 { animation: orangeFlipX 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-3 { animation: orangeFlipY 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-4 { animation: orangeGlitchJitter 0.5s ease-in-out forwards; }
-    .orange-word.effect-5 { animation: orangeJellyWobble 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-6 { animation: orangeSuperSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-7 { animation: orangeFloatWave 0.65s ease-out forwards; }
-    .orange-word.effect-8 { animation: orangeElasticSqueeze 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-9 { animation: orangePulseShockwave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-    .orange-word.effect-10 { animation: orangeUpsidePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-1 { animation: orangeRubberBounce 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-2 { animation: orangeFlipX 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-3 { animation: orangeFlipY 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-4 { animation: orangeGlitchJitter 0.5s ease-in-out forwards; }
+    .orange-char.effect-5 { animation: orangeJellyWobble 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-6 { animation: orangeSuperSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-7 { animation: orangeFloatWave 0.65s ease-out forwards; }
+    .orange-char.effect-8 { animation: orangeElasticSqueeze 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-9 { animation: orangePulseShockwave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .orange-char.effect-10 { animation: orangeUpsidePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
     /* SECTION 2: PROJECTS SHOWCASE GRID */
     .projects-grid {
@@ -697,16 +709,14 @@
     <header>
       <div class="container nav-container">
         <a href="index.html" class="logo">
-          <span>&lt;/&gt;</span> DEVANSH
+          <span>&lt;/&gt;</span> CAIO VICTOR
         </a>
         <ul class="nav-links">
           <li><a href="index.html#home">Início</a></li>
           <li><a href="index.html#about">Sobre</a></li>
-          <li><a href="index.html#services">Serviços</a></li>
-          <li><a href="index.html#skills">Habilidades</a></li>
+          <li><a href="index.html#stack">Tecnologias</a></li>
           <li><a href="projects.html" class="active">Projetos</a></li>
-          <li><a href="index.html#achievements">Conquistas</a></li>
-          <li><a href="index.html#testimonials">Depoimentos</a></li>
+          <li><a href="index.html#experience">Trajetória</a></li>
           <li><a href="index.html#contact">Contato</a></li>
         </ul>
         <a href="index.html#contact" class="btn-talk">Fale Comigo</a>
@@ -1170,11 +1180,22 @@
     <!-- FOOTER -->
     <footer>
       <div class="container footer-container">
-        <div class="logo">
-          <span>&lt;/&gt;</span> DEVANSH
+        <div class="footer-info">
+          <div class="footer-author">Caio Victor Santos Valentim</div>
+          <div class="footer-role">Desenvolvedor Backend • Estudante de ADS (IFMS)</div>
+          <div class="copyright" style="margin-top: 4px;">
+            Construído com código, curiosidade e aprendizado contínuo.
+          </div>
         </div>
+
+        <div class="footer-links">
+          <a href="https://github.com/Caiokl3i" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/caio-victor-santos-valentim" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+          <a href="mailto:caio.victor.santos12@gmail.com" class="footer-link">E-mail</a>
+        </div>
+
         <div class="copyright">
-          &copy; 2026 Devansh. Criando experiências web rápidas, marcantes e elegantes.
+          &copy; 2026 Caio Victor. Todos os direitos reservados.
         </div>
       </div>
     </footer>
@@ -1289,6 +1310,16 @@
       frame1.onerror = (e) => {
         console.error("Error loading frame 1:", getFramePath(1), e);
       };
+
+      // Header scroll effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
     }
 
     function loadAllRemainingFrames() {
@@ -1361,7 +1392,12 @@
             if (part.trim().length > 0) {
               const wordSpan = document.createElement('span');
               wordSpan.className = 'orange-word';
-              wordSpan.textContent = part;
+              for (let char of part) {
+                const charSpan = document.createElement('span');
+                charSpan.className = 'orange-char';
+                charSpan.textContent = char;
+                wordSpan.appendChild(charSpan);
+              }
               fragment.appendChild(wordSpan);
             } else {
               fragment.appendChild(document.createTextNode(part));
@@ -1376,7 +1412,7 @@
     }
 
     function attachOrangeHoverListeners() {
-      document.querySelectorAll('.orange-word').forEach(wordEl => {
+      document.querySelectorAll('.orange-char').forEach(wordEl => {
         wordEl.addEventListener('mouseenter', function(e) {
           let lastEffect = this.dataset.lastEffect ? parseInt(this.dataset.lastEffect) : 0;
           let randomEffect;
