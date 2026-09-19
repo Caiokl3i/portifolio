@@ -943,8 +943,8 @@
       z-index: 2;
       width: 100%;
       text-align: center;
-      margin-top: 10px;
-      margin-bottom: -50px;
+      margin-top: 20px;
+      margin-bottom: -90px;
       pointer-events: none;
       user-select: none;
     }
@@ -960,13 +960,11 @@
       line-height: 0.9;
     }
 
-    /* Dunes Graphic Container at Bottom */
+    /* Dunes Graphic Container at Bottom - Shows Full Dunes & Neon Lines */
     .footer-dunes-art {
       position: relative;
       z-index: 1;
       width: 100%;
-      height: 320px;
-      margin-top: -20px;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -975,18 +973,20 @@
 
     .footer-dunes-img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      min-height: 520px;
+      max-height: 900px;
       object-fit: cover;
-      object-position: center top;
+      object-position: center bottom;
       display: block;
-      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,1) 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,1) 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 8%, rgba(0,0,0,1) 22%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 8%, rgba(0,0,0,1) 22%);
     }
 
     .footer-dunes-ambient-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 100%, rgba(255, 85, 0, 0.18) 0%, rgba(0, 225, 200, 0.1) 40%, transparent 75%);
+      background: radial-gradient(ellipse at 50% 80%, rgba(255, 85, 0, 0.22) 0%, rgba(0, 225, 200, 0.15) 42%, transparent 75%);
       pointer-events: none;
     }
 
@@ -1016,7 +1016,13 @@
         display: none;
       }
       .footer-dunes-art {
-        height: 200px;
+        min-height: 280px;
+      }
+      .footer-dunes-img {
+        min-height: 280px;
+      }
+      .footer-watermark-wrap {
+        margin-bottom: -35px;
       }
     }
 
