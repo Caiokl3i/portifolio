@@ -1111,6 +1111,7 @@
       justify-content: center;
       z-index: 10;
       padding: 30px;
+      pointer-events: none;
     }
 
     .teaser-content {
@@ -1118,6 +1119,7 @@
       flex-direction: column;
       align-items: center;
       gap: 16px;
+      pointer-events: auto;
       text-align: center;
       margin-top: 60px;
       z-index: 12;
@@ -1198,26 +1200,26 @@
     .emilly-project-preview {
       width: 100%;
       height: 220px;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 85, 0, 0.16) 0%, rgba(10, 10, 15, 0.95) 100%);
+      background: #0d0d13;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       position: relative;
+      overflow: hidden;
     }
 
-    .emilly-project-icon-glow {
-      font-size: 3.2rem;
-      font-family: var(--font-mono);
-      font-weight: 800;
-      color: var(--primary-orange-light);
-      text-shadow: 0 0 25px rgba(255, 85, 0, 0.6), 0 0 50px rgba(255, 85, 0, 0.3);
-      transition: transform 0.3s ease;
-      letter-spacing: -2px;
+    .card-preview-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
     }
 
-    .emilly-project-card:hover .emilly-project-icon-glow {
-      transform: scale(1.15);
+    .emilly-project-card:hover .card-preview-thumb {
+      transform: scale(1.05);
     }
 
     .emilly-project-body {
@@ -1718,61 +1720,323 @@
       background: linear-gradient(135deg, #2ce470, #179e8e);
     }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--glass-border);
-      padding: 40px 0;
-      background: rgba(7, 7, 9, 0.85);
-      backdrop-filter: blur(20px);
+    /* =============================================================
+       PROFESSIONAL CINEMATIC FOOTER (SCREEN MOVIE STYLE)
+       ============================================================= */
+    footer.pro-footer {
+      position: relative;
+      background: #000000;
+      color: #ffffff;
+      padding: 70px 0 0 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 10;
     }
 
-    .footer-container {
+    /* Floating Capsule Top Bar */
+    .footer-capsule-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
+      max-width: 680px;
+      margin: 0 auto 64px auto;
+      padding: 7px 10px 7px 18px;
+      background: rgba(18, 18, 24, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 85, 0, 0.1);
+      backdrop-filter: blur(16px);
     }
 
-    .footer-info {
+    .footer-capsule-brand {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .footer-author {
-      font-size: 1.15rem;
-      font-weight: 800;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
       color: #ffffff;
+      text-decoration: none;
     }
 
-    .footer-role {
-      font-size: 0.88rem;
-      color: var(--primary-orange-light);
+    .footer-capsule-icon {
       font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #ff7722;
+      background: rgba(255, 85, 0, 0.15);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 85, 0, 0.3);
     }
 
-    .footer-links {
+    .footer-capsule-links {
       display: flex;
       align-items: center;
       gap: 20px;
     }
 
-    .footer-link {
-      color: var(--text-muted);
+    .footer-capsule-links a {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.84rem;
+      font-weight: 500;
       text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
       transition: color 0.2s ease;
     }
 
-    .footer-link:hover {
-      color: var(--primary-orange-light);
+    .footer-capsule-links a:hover {
+      color: #ffffff;
     }
 
-    .copyright {
+    .footer-capsule-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-capsule-btn:hover {
+      background: #f0f0f0;
+      transform: scale(1.04);
+      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.35);
+    }
+
+    /* Main Multi-Column Grid */
+    .pro-footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.1fr;
+      gap: 40px;
+      position: relative;
+      z-index: 3;
+      padding-bottom: 30px;
+    }
+
+    .footer-brand-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .footer-brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-logo-symbol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #ff5500, #ff8800);
+      color: #ffffff;
+      border-radius: 7px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      box-shadow: 0 0 15px rgba(255, 85, 0, 0.5);
+    }
+
+    .footer-brand-tagline {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f1f2f6;
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    .footer-brand-desc {
       font-size: 0.88rem;
-      color: var(--text-muted);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+      max-width: 320px;
+    }
+
+    .footer-white-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      color: #06070c;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
+      margin-top: 4px;
+    }
+
+    .footer-white-pill-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+      color: #000000;
+    }
+
+    .footer-copyright-line {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin: 6px 0 0 0;
+    }
+
+    .footer-built-attribution {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-built-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #ff7722;
+    }
+
+    /* Navigation Columns */
+    .footer-col-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 18px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-link-item a {
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .footer-link-item a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .footer-badge-mini {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+      background: rgba(255, 85, 0, 0.15);
+      color: #ff7722;
+      border: 1px solid rgba(255, 85, 0, 0.3);
+    }
+
+    /* Giant Subtle Typographic Watermark */
+    .footer-watermark-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: -50px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .footer-watermark-text {
+      font-size: clamp(3.5rem, 13vw, 11rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: rgba(255, 255, 255, 0.05);
+      text-transform: uppercase;
+      white-space: nowrap;
+      display: inline-block;
+      line-height: 0.9;
+    }
+
+    /* Dunes Graphic Container at Bottom */
+    .footer-dunes-art {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 320px;
+      margin-top: -20px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .footer-dunes-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,1) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,1) 100%);
+    }
+
+    .footer-dunes-ambient-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(255, 85, 0, 0.18) 0%, rgba(0, 225, 200, 0.1) 40%, transparent 75%);
+      pointer-events: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .pro-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+      .footer-brand-block {
+        grid-column: 1 / -1;
+      }
+      .footer-capsule-bar {
+        flex-direction: column;
+        gap: 12px;
+        border-radius: 20px;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .pro-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .footer-capsule-bar {
+        display: none;
+      }
+      .footer-dunes-art {
+        height: 200px;
+      }
     }
 
     /* Responsive Queries */
@@ -1805,6 +2069,344 @@
       .code-badge-card {
         margin-left: 0;
         max-width: 100%;
+      }
+    }
+
+    /* =============================================================
+       MOCKUP 3D FLOATING NEON MODAL LIGHTBOX
+       ============================================================= */
+    .mockup-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s ease;
+      overflow: hidden;
+    }
+
+    .mockup-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .mockup-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 7, 12, 0.62);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      transition: opacity 0.4s ease;
+    }
+
+    .mockup-modal-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      max-width: 1320px;
+      max-height: 96vh;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 36px 26px;
+      box-sizing: border-box;
+      transform: scale(0.92) translateY(24px);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mockup-modal.is-open .mockup-modal-content {
+      transform: scale(1) translateY(0px);
+    }
+
+    /* Modal Header */
+    .mockup-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 10;
+    }
+
+    .modal-badge-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #ffffff;
+      width: fit-content;
+      letter-spacing: 0.5px;
+      transition: border-color 0.3s ease;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary-orange-light);
+      box-shadow: 0 0 10px var(--primary-orange-light);
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
+    .modal-project-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-project-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .modal-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .modal-close-button {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-close-button:hover {
+      background: rgba(255, 85, 0, 0.22);
+      border-color: var(--primary-orange-light);
+      color: #ffffff;
+      transform: scale(1.08) rotate(90deg);
+      box-shadow: 0 0 22px rgba(255, 85, 0, 0.45);
+    }
+
+    .kbd-esc {
+      position: absolute;
+      bottom: -19px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.5px;
+      pointer-events: none;
+    }
+
+    /* 3D STAGE & FLOATING MOCKUP */
+    .mockup-3d-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1600px;
+      perspective-origin: 50% 50%;
+      min-height: 480px;
+      user-select: none;
+      overflow: visible;
+    }
+
+    /* VIBRANT NEON GLOW BACKDROP */
+    .mockup-neon-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 980px;
+      height: 460px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.95;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      animation: neonBreathePulse 4.5s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+
+    .mockup-neon-glow.neon-green {
+      background: radial-gradient(ellipse at center, rgba(39, 230, 80, 0.9) 0%, rgba(30, 205, 70, 0.55) 30%, rgba(15, 170, 55, 0.25) 56%, transparent 75%);
+      box-shadow: 0 0 100px rgba(39, 230, 80, 0.7), 0 0 200px rgba(25, 190, 60, 0.4);
+      filter: blur(55px);
+    }
+
+    .mockup-neon-glow.neon-cyan {
+      background: radial-gradient(ellipse at center, rgba(0, 245, 230, 0.9) 0%, rgba(0, 205, 245, 0.55) 30%, rgba(0, 145, 230, 0.25) 56%, transparent 75%);
+      box-shadow: 0 0 100px rgba(0, 245, 230, 0.7), 0 0 200px rgba(0, 160, 245, 0.4);
+      filter: blur(55px);
+    }
+
+    .mockup-neon-glow.neon-purple {
+      background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.9) 0%, rgba(139, 92, 246, 0.55) 30%, rgba(99, 102, 241, 0.25) 56%, transparent 75%);
+      box-shadow: 0 0 100px rgba(168, 85, 247, 0.7), 0 0 200px rgba(139, 92, 246, 0.4);
+      filter: blur(55px);
+    }
+
+    @keyframes neonBreathePulse {
+      0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.96);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+    }
+
+    /* FLOATING CARD CONTAINER (TILTS WITH MOUSE) */
+    .mockup-floating-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1060px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.06s linear;
+    }
+
+    /* INNER IMAGE WITH CRYSTAL SHARP RENDERING & SMOOTH LEVITATION */
+    .mockup-device-img {
+      width: 100%;
+      max-width: 1024px;
+      height: auto;
+      max-height: 72vh;
+      object-fit: contain;
+      pointer-events: none;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(0);
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.8));
+      animation: ambientLevitate 5s ease-in-out infinite;
+      will-change: transform;
+      transform-origin: center center;
+    }
+
+    @keyframes ambientLevitate {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* MODAL FOOTER */
+    .mockup-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 10;
+    }
+
+    .modal-tech-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .modal-tech-pills .tag-badge {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.76rem;
+      padding: 4px 10px;
+    }
+
+    /* PREVIEW CARD HOVER OVERLAYS */
+    .emilly-project-card[data-mockup] {
+      cursor: pointer;
+    }
+
+    .emilly-project-card[data-mockup] .emilly-project-preview {
+      cursor: pointer;
+    }
+
+    .emilly-project-card[data-mockup]:hover .preview-hover-overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .mockup-modal-content {
+        padding: 18px 16px;
+        max-height: 98vh;
+      }
+
+      .mockup-modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .modal-header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .modal-interaction-hint {
+        display: none;
+      }
+
+      .modal-project-title {
+        font-size: 1.45rem;
+      }
+
+      .mockup-3d-stage {
+        min-height: 280px;
+      }
+
+      .mockup-device-img {
+        max-height: 50vh;
+      }
+
+      .mockup-modal-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
     }
   </style>
@@ -2178,59 +2780,79 @@
         <div class="projects-teaser-wrapper reveal-item">
           <div class="emilly-projects-grid">
             <!-- Project 1: NAPNE Digital -->
-            <div class="emilly-project-card">
+            <div class="emilly-project-card" data-mockup="mockups/napne-digital-mockup.png" data-project-title="NAPNE Digital" data-project-subtitle="Prontuário eletrônico e sistema de acompanhamento multidisciplinar • IFMS" data-badge="DESTAQUE • EM PRODUÇÃO" data-neon="green">
               <div class="emilly-project-preview">
-                <span class="emilly-project-icon-glow">&lt;/&gt;</span>
+                <span class="preview-badge" style="border-color: rgba(39, 201, 63, 0.45); color: #38e454; position: absolute; top: 12px; right: 12px; z-index: 4; background: rgba(0,0,0,0.75); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700;">DESTAQUE • EM PRODUÇÃO</span>
+                <img src="screens/napne-digital.png" class="card-preview-thumb" alt="NAPNE Digital" loading="lazy" />
+                <div class="preview-hover-overlay">
+                  <div class="preview-hover-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </div>
+                  <span class="preview-hover-text">Visualizar Mockup 3D</span>
+                </div>
               </div>
               <div class="emilly-project-body">
                 <h3 class="emilly-project-title">NAPNE Digital</h3>
                 <p class="emilly-project-desc">
-                  Sistema acadêmico completo desenvolvido para apoiar o gerenciamento de atendimentos, agendamentos e
-                  prontuários digitais de estudantes com necessidades específicas. Construído com FastAPI, SQLAlchemy,
-                  SQLite e React.
+                  Sistema acadêmico completo desenvolvido para apoiar o gerenciamento de atendimentos, agendamentos e prontuários digitais de estudantes com necessidades específicas. Construído com FastAPI, SQLAlchemy, SQLite e React.
                 </p>
                 <div class="emilly-project-footer">
-                  <span class="emilly-project-status">Concluído / Acadêmico</span>
-                  <span class="emilly-project-link">Ver Código &rarr;</span>
+                  <a href="https://github.com/Caiokl3i/Napne-Digital" target="_blank" rel="noopener noreferrer" class="emilly-project-status" style="border-color: rgba(39, 201, 63, 0.4); color: #38e454; text-decoration: none;">GitHub &rarr;</a>
+                  <button type="button" class="emilly-project-link btn-open-mockup" data-mockup="mockups/napne-digital-mockup.png" data-project-title="NAPNE Digital" data-project-subtitle="Prontuário eletrônico e sistema de acompanhamento multidisciplinar • IFMS" data-badge="DESTAQUE • EM PRODUÇÃO" data-neon="green" style="background: none; border: none; cursor: pointer;">Ver Mockup 3D &rarr;</button>
                 </div>
               </div>
             </div>
 
-            <!-- Project 2: SYN RH -->
-            <div class="emilly-project-card">
+            <!-- Project 2: Music Class -->
+            <div class="emilly-project-card" data-mockup="mockups/music-class-mockup.png" data-project-title="Music Class" data-project-subtitle="Plataforma SaaS para Professores e Estúdios de Música" data-badge="SAAS • ESTÚDIO PARTICULAR" data-neon="cyan">
               <div class="emilly-project-preview">
-                <span class="emilly-project-icon-glow">&lt;/&gt;</span>
+                <span class="preview-badge" style="border-color: rgba(0, 225, 200, 0.45); color: #00e5d0; position: absolute; top: 12px; right: 12px; z-index: 4; background: rgba(0,0,0,0.75); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700;">SAAS • ESTÚDIO PARTICULAR</span>
+                <img src="screens/music-class.png" class="card-preview-thumb" alt="Music Class" loading="lazy" />
+                <div class="preview-hover-overlay">
+                  <div class="preview-hover-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </div>
+                  <span class="preview-hover-text">Visualizar Mockup 3D</span>
+                </div>
               </div>
               <div class="emilly-project-body">
-                <h3 class="emilly-project-title">SYN RH</h3>
+                <h3 class="emilly-project-title">Music Class</h3>
                 <p class="emilly-project-desc">
-                  Conjunto de sistemas corporativos para automação de processos e rotinas de gestão de pessoas com
-                  arquitetura modular, controle de permissões por perfil e comunicação de dados via APIs seguras com
-                  PostgreSQL.
+                  Plataforma SaaS para gestão de professores e estúdios particulares de música, integrando acompanhamento em tempo real de alunos, controle de receitas a receber, pacotes e disparos via WhatsApp.
                 </p>
                 <div class="emilly-project-footer">
-                  <span class="emilly-project-status">Corporativo / Produção</span>
-                  <span class="emilly-project-status"
-                    style="border:none; color:var(--text-muted); background:transparent;">Ambiente Privado</span>
+                  <a href="https://github.com/Caiokl3i/music-class" target="_blank" rel="noopener noreferrer" class="emilly-project-status" style="border-color: rgba(0, 225, 200, 0.4); color: #00e5d0; text-decoration: none;">GitHub &rarr;</a>
+                  <button type="button" class="emilly-project-link btn-open-mockup" data-mockup="mockups/music-class-mockup.png" data-project-title="Music Class" data-project-subtitle="Plataforma SaaS para Professores e Estúdios de Música" data-badge="SAAS • ESTÚDIO PARTICULAR" data-neon="cyan" style="background: none; border: none; cursor: pointer;">Ver Mockup 3D &rarr;</button>
                 </div>
               </div>
             </div>
 
-            <!-- Project 3: CRM WhatsApp -->
-            <div class="emilly-project-card">
+            <!-- Project 3: Bingo Online -->
+            <div class="emilly-project-card" data-mockup="mockups/bingo-online-mockup.png" data-project-title="Bingo Online" data-project-subtitle="Aplicação Fullstack multiplayer para partidas de Bingo em tempo real" data-badge="MULTIPLAYER • FULLSTACK" data-neon="purple">
               <div class="emilly-project-preview">
-                <span class="emilly-project-icon-glow">&lt;/&gt;</span>
+                <span class="preview-badge" style="border-color: rgba(168, 85, 247, 0.45); color: #c084fc; position: absolute; top: 12px; right: 12px; z-index: 4; background: rgba(0,0,0,0.75); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700;">MULTIPLAYER • FULLSTACK</span>
+                <img src="screens/bingo-online.png" class="card-preview-thumb" alt="Bingo Online" loading="lazy" />
+                <div class="preview-hover-overlay">
+                  <div class="preview-hover-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </div>
+                  <span class="preview-hover-text">Visualizar Mockup 3D</span>
+                </div>
               </div>
               <div class="emilly-project-body">
-                <h3 class="emilly-project-title">CRM WhatsApp</h3>
+                <h3 class="emilly-project-title">Bingo Online</h3>
                 <p class="emilly-project-desc">
-                  Plataforma para gerenciamento de contatos, histórico de conversas e acompanhamento de fluxos de
-                  atendimento integrados a endpoints de mensageria com Node.js, Express e PostgreSQL.
+                  Plataforma web multiplayer para partidas de Bingo em tempo real com validação automática de cartelas (linhas, colunas e diagonais), painel administrativo para sorteio de bolas e ambiente Docker.
                 </p>
                 <div class="emilly-project-footer">
-                  <span class="emilly-project-status">Em Produção</span>
-                  <span class="emilly-project-status"
-                    style="border:none; color:var(--text-muted); background:transparent;">Ambiente Privado</span>
+                  <a href="https://github.com/Caiokl3i/Bingo-Online" target="_blank" rel="noopener noreferrer" class="emilly-project-status" style="border-color: rgba(168, 85, 247, 0.4); color: #c084fc; text-decoration: none;">GitHub &rarr;</a>
+                  <button type="button" class="emilly-project-link btn-open-mockup" data-mockup="mockups/bingo-online-mockup.png" data-project-title="Bingo Online" data-project-subtitle="Aplicação Fullstack multiplayer para partidas de Bingo em tempo real" data-badge="MULTIPLAYER • FULLSTACK" data-neon="purple" style="background: none; border: none; cursor: pointer;">Ver Mockup 3D &rarr;</button>
                 </div>
               </div>
             </div>
@@ -2456,30 +3078,163 @@
       </div>
     </section>
 
-    <!-- 11. FOOTER -->
-    <footer>
-      <div class="container footer-container">
-        <div class="footer-info">
-          <div class="footer-author">Caio Victor Santos Valentim</div>
-          <div class="footer-role">Desenvolvedor Backend • Estudante de ADS (IFMS)</div>
-          <div class="copyright" style="margin-top: 4px;">
-            Construído com código, curiosidade e aprendizado contínuo.
+    <!-- 11. FOOTER (SCREEN MOVIE STYLE CINEMATIC FOOTER) -->
+    <footer class="pro-footer">
+      <div class="container">
+        <!-- Floating Capsule Top Bar -->
+        <div class="footer-capsule-bar reveal-item">
+          <a href="#hero" class="footer-capsule-brand">
+            <span class="footer-capsule-icon">&lt;/&gt;</span>
+            <span>Caio Victor</span>
+          </a>
+          <div class="footer-capsule-links">
+            <a href="#about">Sobre</a>
+            <a href="#skills">Stack</a>
+            <a href="#projects">Projetos</a>
+            <a href="#experience">Trajetória</a>
+            <a href="#contact">Contato</a>
+          </div>
+          <a href="#contact" class="footer-capsule-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Fale Comigo
+          </a>
+        </div>
+
+        <!-- Main Multi-Column Grid -->
+        <div class="pro-footer-grid">
+          <!-- Column 1: Brand & Tagline -->
+          <div class="footer-brand-block reveal-item">
+            <a href="#hero" class="footer-brand-logo">
+              <span class="footer-logo-symbol">&lt;/&gt;</span>
+              <span>Caio Victor</span>
+            </a>
+            <h3 class="footer-brand-tagline">Desenvolvedor Backend &amp; Fullstack</h3>
+            <p class="footer-brand-desc">
+              Desenvolvendo arquiteturas sólidas, microsserviços, APIs de alta vazão e soluções escaláveis com foco em confiabilidade e performance.
+            </p>
+            <a href="#contact" class="footer-white-pill-btn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              Fale Comigo
+            </a>
+            <p class="footer-copyright-line">&copy; 2026 Caio Victor. Todos os direitos reservados.</p>
+            <div class="footer-built-attribution">
+              <span>Desenvolvido com</span>
+              <span style="color: #ff7722;">⚡</span>
+              <span>por</span>
+              <img src="caio-avatar.jpg" alt="Caio Victor" class="footer-built-avatar" />
+              <strong>Caio Victor</strong>
+            </div>
+          </div>
+
+          <!-- Column 2: Menu Principal -->
+          <div class="footer-col reveal-item">
+            <h4 class="footer-col-title">Menu</h4>
+            <ul class="footer-links-list">
+              <li class="footer-link-item"><a href="#hero">Início</a></li>
+              <li class="footer-link-item"><a href="#about">Sobre Mim</a></li>
+              <li class="footer-link-item"><a href="#skills">Competências</a></li>
+              <li class="footer-link-item"><a href="#projects">Projetos</a></li>
+              <li class="footer-link-item"><a href="#experience">Trajetória</a></li>
+              <li class="footer-link-item"><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Projetos -->
+          <div class="footer-col reveal-item">
+            <h4 class="footer-col-title">Projetos</h4>
+            <ul class="footer-links-list">
+              <li class="footer-link-item"><a href="https://github.com/Caiokl3i/Napne-Digital" target="_blank" rel="noopener noreferrer">NAPNE Digital <span class="footer-badge-mini">IFMS</span></a></li>
+              <li class="footer-link-item"><a href="https://github.com/Caiokl3i/music-class" target="_blank" rel="noopener noreferrer">Music Class <span class="footer-badge-mini">SaaS</span></a></li>
+              <li class="footer-link-item"><a href="https://github.com/Caiokl3i/Bingo-Online" target="_blank" rel="noopener noreferrer">Bingo Online <span class="footer-badge-mini">Live</span></a></li>
+              <li class="footer-link-item"><a href="projects.html">Ver Todos &rarr;</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Conexões -->
+          <div class="footer-col reveal-item">
+            <h4 class="footer-col-title">Conexões</h4>
+            <ul class="footer-links-list">
+              <li class="footer-link-item"><a href="https://github.com/Caiokl3i" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li class="footer-link-item"><a href="https://www.linkedin.com/in/caio-victor-santos-valentim" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li class="footer-link-item"><a href="https://wa.me/5567991583099" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li class="footer-link-item"><a href="mailto:caio.victor.santos12@gmail.com">E-mail Direto</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 5: Stack & Tecnologias -->
+          <div class="footer-col reveal-item">
+            <h4 class="footer-col-title">Tecnologias</h4>
+            <ul class="footer-links-list">
+              <li class="footer-link-item"><a href="#skills">Node.js &amp; TS</a></li>
+              <li class="footer-link-item"><a href="#skills">Python &amp; FastAPI</a></li>
+              <li class="footer-link-item"><a href="#skills">Docker &amp; Linux</a></li>
+              <li class="footer-link-item"><a href="#skills">PostgreSQL &amp; Redis</a></li>
+            </ul>
           </div>
         </div>
 
-        <div class="footer-links">
-          <a href="https://github.com/Caiokl3i" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
-          <a href="https://www.linkedin.com/in/caio-victor-santos-valentim" target="_blank" rel="noopener noreferrer"
-            class="footer-link">LinkedIn</a>
-          <a href="mailto:caio.victor.santos12@gmail.com" class="footer-link">E-mail</a>
+        <!-- Giant Typography Watermark -->
+        <div class="footer-watermark-wrap">
+          <span class="footer-watermark-text">CAIO VICTOR</span>
         </div>
+      </div>
 
-        <div class="copyright">
-          &copy; 2026 Caio Victor. Todos os direitos reservados.
-        </div>
+      <!-- Glowing Dunes Horizon Background Graphic -->
+      <div class="footer-dunes-art">
+        <img src="footer-dunes.jpg" alt="Neon sand dunes horizon" class="footer-dunes-img" loading="lazy" />
+        <div class="footer-dunes-ambient-glow"></div>
       </div>
     </footer>
 
+  </div>
+
+  <!-- MODAL DE MOCKUP INTERATIVO 3D COM LUZ NEON FLUTUANTE -->
+  <div id="projectMockupModal" class="mockup-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+    <div class="mockup-modal-backdrop" id="modalBackdrop"></div>
+
+    <div class="mockup-modal-content">
+      <!-- Barra Superior do Modal -->
+      <div class="mockup-modal-header">
+        <div class="modal-badge-title-group">
+          <div class="modal-project-badge" id="modalProjectBadge">
+            <span class="badge-dot"></span>
+            <span id="modalBadgeText">PROJETO EM PRODUÇÃO</span>
+          </div>
+          <h3 class="modal-project-title" id="modalProjectTitle">NAPNE Digital</h3>
+          <p class="modal-project-desc" id="modalProjectDesc">Prontuário eletrônico e acompanhamento multidisciplinar (IFMS Três Lagoas)</p>
+        </div>
+
+        <div class="modal-header-actions">
+          <button type="button" class="modal-close-button" id="modalCloseButton" aria-label="Fechar visualização">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span class="kbd-esc">ESC</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Palco 3D do Mockup e Luz Neon -->
+      <div class="mockup-3d-stage" id="mockupStage">
+        <!-- Luz Neon Dinâmica de Fundo -->
+        <div class="mockup-neon-glow neon-green" id="mockupNeonGlow"></div>
+
+        <!-- Elemento Flutuante que inclina seguindo o mouse -->
+        <div class="mockup-floating-card" id="mockupFloatingCard">
+          <img id="modalMockupImg" class="mockup-device-img" src="mockups/napne-digital-mockup.png" alt="Mockup responsivo em múltiplos dispositivos" />
+        </div>
+      </div>
+
+      <!-- Rodapé do Modal -->
+      <div class="mockup-modal-footer">
+        <div class="modal-tech-pills" id="modalTechPills">
+          <!-- Tags do projeto inseridas dinamicamente -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- FRAME ANIMATION CANVAS SCRIPT -->
@@ -2922,11 +3677,199 @@
       updateActiveOnScroll();
     }
 
+    // -------------------------------------------------------------
+    // INTERACTIVE 3D FLOATING MOCKUP MODAL SYSTEM (NEON + LERP PARALLAX)
+    // -------------------------------------------------------------
+    function initMockupModalSystem() {
+      const modal = document.getElementById('projectMockupModal');
+      if (!modal) return;
+
+      const backdrop = document.getElementById('modalBackdrop');
+      const closeBtn = document.getElementById('modalCloseButton');
+      const titleEl = document.getElementById('modalProjectTitle');
+      const descEl = document.getElementById('modalProjectDesc');
+      const badgeText = document.getElementById('modalBadgeText');
+      const badgeEl = document.getElementById('modalProjectBadge');
+      const imgEl = document.getElementById('modalMockupImg');
+      const glowEl = document.getElementById('mockupNeonGlow');
+      const floatingCard = document.getElementById('mockupFloatingCard');
+      const techPillsEl = document.getElementById('modalTechPills');
+
+      let isOpen = false;
+      let mouseX = 0;
+      let mouseY = 0;
+      let currentTiltX = 0;
+      let currentTiltY = 0;
+      let currentMoveX = 0;
+      let currentMoveY = 0;
+      let rafId = null;
+
+      function openModal(data) {
+        if (!data || !data.mockup) return;
+
+        imgEl.src = data.mockup;
+        imgEl.alt = data.title || 'Mockup do Projeto';
+        titleEl.textContent = data.title || 'Projeto';
+        descEl.textContent = data.subtitle || '';
+        badgeText.textContent = data.badge || 'PROJETO EM DESTAQUE';
+
+        // Dynamic Neon Glow Theme
+        if (data.neon === 'cyan') {
+          glowEl.className = 'mockup-neon-glow neon-cyan';
+          badgeEl.style.borderColor = 'rgba(0, 225, 200, 0.45)';
+          const dot = badgeEl.querySelector('.badge-dot');
+          if (dot) {
+            dot.style.background = '#00e5d0';
+            dot.style.boxShadow = '0 0 10px #00e5d0';
+          }
+        } else if (data.neon === 'purple') {
+          glowEl.className = 'mockup-neon-glow neon-purple';
+          badgeEl.style.borderColor = 'rgba(168, 85, 247, 0.45)';
+          const dot = badgeEl.querySelector('.badge-dot');
+          if (dot) {
+            dot.style.background = '#c084fc';
+            dot.style.boxShadow = '0 0 10px #c084fc';
+          }
+        } else {
+          glowEl.className = 'mockup-neon-glow neon-green';
+          badgeEl.style.borderColor = 'rgba(39, 201, 63, 0.45)';
+          const dot = badgeEl.querySelector('.badge-dot');
+          if (dot) {
+            dot.style.background = '#38e454';
+            dot.style.boxShadow = '0 0 10px #38e454';
+          }
+        }
+
+        // Tech pills
+        if (techPillsEl && data.tags && data.tags.length > 0) {
+          techPillsEl.innerHTML = data.tags.map(t => `<span class="tag-badge">${t}</span>`).join('');
+        }
+
+        // Reset Physics
+        mouseX = 0;
+        mouseY = 0;
+        currentTiltX = 0;
+        currentTiltY = 0;
+        currentMoveX = 0;
+        currentMoveY = 0;
+        if (floatingCard) {
+          floatingCard.style.transform = 'translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
+        }
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        isOpen = true;
+
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(animatePhysics);
+      }
+
+      function closeModal() {
+        if (!isOpen) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        isOpen = false;
+        cancelAnimationFrame(rafId);
+      }
+
+      function animatePhysics() {
+        if (!isOpen) return;
+
+        // Smooth physics calculation (gentle tilt to keep text razor sharp)
+        const targetTiltX = -mouseY * 3.5;
+        const targetTiltY = mouseX * 4.5;
+        const targetMoveX = mouseX * 18;
+        const targetMoveY = mouseY * 12;
+
+        currentTiltX += (targetTiltX - currentTiltX) * 0.075;
+        currentTiltY += (targetTiltY - currentTiltY) * 0.075;
+        currentMoveX += (targetMoveX - currentMoveX) * 0.075;
+        currentMoveY += (targetMoveY - currentMoveY) * 0.075;
+
+        const neonX = -currentMoveX * 0.65;
+        const neonY = -currentMoveY * 0.65;
+
+        if (floatingCard) {
+          floatingCard.style.transform = `translate3d(${currentMoveX.toFixed(2)}px, ${currentMoveY.toFixed(2)}px, 0) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+        }
+
+        if (glowEl) {
+          glowEl.style.transform = `translate(calc(-50% + ${neonX.toFixed(2)}px), calc(-50% + ${neonY.toFixed(2)}px))`;
+        }
+
+        rafId = requestAnimationFrame(animatePhysics);
+      }
+
+      function handlePointerMove(e) {
+        if (!isOpen) return;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        mouseX = ((clientX / w) * 2) - 1;
+        mouseY = ((clientY / h) * 2) - 1;
+      }
+
+      window.addEventListener('mousemove', handlePointerMove, { passive: true });
+      window.addEventListener('touchmove', handlePointerMove, { passive: true });
+
+      // Click on cards with data-mockup
+      document.querySelectorAll('.project-card[data-mockup], .emilly-project-card[data-mockup]').forEach(card => {
+        card.addEventListener('click', (e) => {
+          // If clicking an external link that isn't a mockup button, don't trigger modal
+          if (e.target.closest('a') && !e.target.closest('.btn-open-mockup')) {
+            return;
+          }
+
+          const mockup = card.getAttribute('data-mockup');
+          if (!mockup) return;
+
+          e.preventDefault();
+          const title = card.getAttribute('data-project-title') || card.querySelector('.project-name, .emilly-project-title')?.textContent || '';
+          const subtitle = card.getAttribute('data-project-subtitle') || card.querySelector('.project-summary, .emilly-project-desc')?.textContent || '';
+          const badge = card.getAttribute('data-badge') || card.querySelector('.preview-badge, .emilly-project-status')?.textContent || '';
+          const neon = card.getAttribute('data-neon') || 'green';
+          const tags = Array.from(card.querySelectorAll('.project-tags .tag-badge, .tag-badge')).map(el => el.textContent.trim());
+
+          openModal({ mockup, title, subtitle, badge, neon, tags });
+        });
+      });
+
+      // Click on buttons with .btn-open-mockup
+      document.querySelectorAll('.btn-open-mockup').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const card = btn.closest('.project-card, .emilly-project-card') || btn;
+          const mockup = btn.getAttribute('data-mockup') || card.getAttribute('data-mockup');
+          const title = btn.getAttribute('data-project-title') || card.getAttribute('data-project-title') || '';
+          const subtitle = btn.getAttribute('data-project-subtitle') || card.getAttribute('data-project-subtitle') || '';
+          const badge = btn.getAttribute('data-badge') || card.getAttribute('data-badge') || '';
+          const neon = btn.getAttribute('data-neon') || card.getAttribute('data-neon') || 'green';
+          const tags = Array.from(card.querySelectorAll('.project-tags .tag-badge, .tag-badge')).map(el => el.textContent.trim());
+
+          openModal({ mockup, title, subtitle, badge, neon, tags });
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) {
+          closeModal();
+        }
+      });
+    }
+
     // Launch
     init();
     initScrollReveal();
     initActiveNavSpy();
     initRandomOrangeWordEffects();
+    initMockupModalSystem();
     requestAnimationFrame(tick);
   </script>
 </body>
