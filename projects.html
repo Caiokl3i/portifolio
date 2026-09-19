@@ -702,329 +702,169 @@
 
 
     /* =============================================================
-       PROFESSIONAL CINEMATIC FOOTER (SCREEN MOVIE STYLE)
+       CINEMATIC NEON DUNES FOOTER (SCREEN MOVIE STYLE)
        ============================================================= */
-    footer.pro-footer {
+    footer {
       position: relative;
-      background: #000000;
-      color: #ffffff;
-      padding: 48px 0 0 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(7, 7, 9, 0.6) 20%, rgba(7, 7, 9, 0.9) 45%, #070709 70%);
+      min-height: 290px;
+      padding: 40px 0 130px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       overflow: hidden;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
       z-index: 10;
     }
 
-    /* Floating Capsule Top Bar */
-    .footer-capsule-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 680px;
-      margin: 0 auto 36px auto;
-      padding: 7px 10px 7px 18px;
-      background: rgba(18, 18, 24, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 85, 0, 0.1);
-      backdrop-filter: blur(16px);
-    }
-
-    .footer-capsule-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .footer-capsule-icon {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: #ff7722;
-      background: rgba(255, 85, 0, 0.15);
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 85, 0, 0.3);
-    }
-
-    .footer-capsule-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-capsule-links a {
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 0.84rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-capsule-links a:hover {
-      color: #ffffff;
-    }
-
-    .footer-capsule-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #ffffff;
-      color: #000000;
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 7px 16px;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
-    }
-
-    .footer-capsule-btn:hover {
-      background: #f0f0f0;
-      transform: scale(1.04);
-      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.35);
-    }
-
-    /* Main Multi-Column Grid */
-    .pro-footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr 1.1fr;
-      gap: 40px;
-      position: relative;
-      z-index: 3;
-      padding-bottom: 15px;
-    }
-
-    .footer-brand-block {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .footer-brand-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #ffffff;
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-
-    .footer-logo-symbol {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, #ff5500, #ff8800);
-      color: #ffffff;
-      border-radius: 7px;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 800;
-      box-shadow: 0 0 15px rgba(255, 85, 0, 0.5);
-    }
-
-    .footer-brand-tagline {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #f1f2f6;
-      margin: 0;
-      line-height: 1.35;
-    }
-
-    .footer-brand-desc {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0;
-      max-width: 320px;
-    }
-
-    .footer-white-pill-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #ffffff;
-      color: #06070c;
-      padding: 10px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
-      margin-top: 4px;
-    }
-
-    .footer-white-pill-btn:hover {
-      background: #ffffff;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
-      color: #000000;
-    }
-
-    .footer-copyright-line {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.45);
-      margin: 6px 0 0 0;
-    }
-
-    .footer-built-attribution {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.65);
-    }
-
-    .footer-built-avatar {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid #ff7722;
-    }
-
-    /* Navigation Columns */
-    .footer-col-title {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0 0 18px 0;
-      letter-spacing: -0.01em;
-    }
-
-    .footer-links-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .footer-link-item a {
-      color: rgba(255, 255, 255, 0.55);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.2s ease, transform 0.2s ease;
-      display: inline-block;
-    }
-
-    .footer-link-item a:hover {
-      color: #ffffff;
-      transform: translateX(3px);
-    }
-
-    .footer-badge-mini {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 6px;
-      vertical-align: middle;
-      background: rgba(255, 85, 0, 0.15);
-      color: #ff7722;
-      border: 1px solid rgba(255, 85, 0, 0.3);
-    }
-
-    /* Giant Subtle Typographic Watermark */
-    .footer-watermark-wrap {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      text-align: center;
-      margin-top: 10px;
-      margin-bottom: -40px;
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(7, 7, 9, 0.35) 50%, rgba(7, 7, 9, 0.75) 100%);
       pointer-events: none;
-      user-select: none;
+      z-index: 2;
     }
 
-    .footer-watermark-text {
-      font-size: clamp(2.2rem, 7vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: rgba(255, 255, 255, 0.04);
-      text-transform: uppercase;
-      white-space: nowrap;
-      display: inline-block;
-      line-height: 0.85;
-    }
-
-    /* Dunes Graphic Container at Bottom - Sleek & Minimalist with Mountain Vista */
+    /* Ambient Soft Shading & Glow Overlays */
     .footer-dunes-art {
-      position: relative;
-      z-index: 1;
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: 230px;
-      margin-top: -15px;
+      height: 100%;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .footer-dunes-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 60%;
+      object-position: center bottom;
       display: block;
-      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,1) 45%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,1) 45%);
+      opacity: 0.92;
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 25%, #000000 75%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 25%, #000000 75%);
+    }
+
+    /* Smooth darkening shadows to guarantee text readability & gentle blend */
+    .footer-dunes-shadow-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 52%;
+      background: linear-gradient(to bottom, rgba(7, 7, 9, 0.5) 0%, rgba(7, 7, 9, 0.18) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .footer-dunes-shadow-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38%;
+      background: linear-gradient(to top, rgba(7, 7, 9, 0.6) 0%, transparent 100%);
+      pointer-events: none;
     }
 
     .footer-dunes-ambient-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 90%, rgba(255, 85, 0, 0.16) 0%, rgba(0, 225, 200, 0.12) 40%, transparent 75%);
+      background: radial-gradient(ellipse at 50% 90%, rgba(255, 85, 0, 0.22) 0%, rgba(0, 225, 200, 0.15) 45%, transparent 75%);
       pointer-events: none;
     }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .pro-footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
-      }
-      .footer-brand-block {
-        grid-column: 1 / -1;
-      }
-      .footer-capsule-bar {
-        flex-direction: column;
-        gap: 12px;
-        border-radius: 20px;
-        padding: 16px;
-      }
+    /* Giant Subtle Typographic Watermark */
+    .footer-watermark-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
     }
 
-    @media (max-width: 640px) {
-      .pro-footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .footer-capsule-bar {
-        display: none;
-      }
-      .footer-dunes-art {
-        height: 160px;
-      }
-      .footer-dunes-img {
-        height: 100%;
-        object-position: center 60%;
-      }
-      .footer-watermark-wrap {
-        margin-bottom: -20px;
-      }
+    .footer-watermark-text {
+      font-size: clamp(2.8rem, 9vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: rgba(255, 255, 255, 0.05);
+      text-transform: uppercase;
+      white-space: nowrap;
+      display: inline-block;
+      line-height: 0.85;
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 14px 24px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(7, 7, 9, 0.35) 0%, rgba(7, 7, 9, 0.1) 60%, transparent 100%);
+      border-radius: 16px;
+    }
+
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.95));
+    }
+
+    .footer-author {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 22px rgba(0, 0, 0, 0.9);
+    }
+
+    .footer-role {
+      font-size: 0.88rem;
+      color: var(--primary-orange-light);
+      font-family: var(--font-mono);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.85);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.95));
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.85);
+    }
+
+    .footer-link:hover {
+      color: #ffffff;
+      transform: translateY(-1px);
+      text-shadow: 0 2px 14px rgba(255, 85, 0, 0.6);
+    }
+
+    .copyright {
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.65);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.85);
     }
 
     /* Responsive Queries */
@@ -1340,56 +1180,40 @@
     .preview-hover-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(10, 12, 18, 0.88) 0%, rgba(4, 5, 8, 0.96) 100%);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: radial-gradient(circle at 50% 50%, rgba(10, 12, 18, 0.2) 0%, rgba(4, 5, 8, 0.42) 100%);
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       opacity: 0;
-      transform: scale(0.96);
-      transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 6;
+      transition: all 0.3s ease;
+      z-index: 5;
       pointer-events: none;
     }
 
-    .project-card[data-mockup]:hover .preview-hover-overlay {
+    .project-card:hover .preview-hover-overlay {
       opacity: 1;
-      transform: scale(1);
     }
 
     .preview-hover-icon {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: rgba(255, 85, 0, 0.15);
-      border: 1px solid rgba(255, 85, 0, 0.5);
+      border: 1px solid rgba(255, 85, 0, 0.6);
       color: var(--primary-orange-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 20px rgba(255, 85, 0, 0.35);
-      animation: pulseIcon 2.2s ease-in-out infinite;
+      box-shadow: 0 0 22px rgba(255, 85, 0, 0.4);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     }
 
-    @keyframes pulseIcon {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 16px rgba(255, 85, 0, 0.35); }
-      50% { transform: scale(1.12); box-shadow: 0 0 28px rgba(255, 85, 0, 0.65); }
-    }
-
-    .preview-hover-text {
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-
-    .preview-hover-subtext {
-      font-size: 0.74rem;
-      color: var(--text-muted);
+    .project-card:hover .preview-hover-icon {
+      transform: scale(1);
+      box-shadow: 0 0 28px rgba(255, 85, 0, 0.65);
     }
 
     /* Mobile Responsive for Modal */
@@ -1503,7 +1327,6 @@
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </div>
-                <span class="preview-hover-text">Visualizar Mockup 3D</span>
               </div>
             </div>
             <div class="project-body">
@@ -1543,10 +1366,6 @@
               </div>
               <div class="project-actions">
                 <a href="https://github.com/Caiokl3i/Napne-Digital" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Repositório GitHub &rarr;</a>
-                <button type="button" class="btn-card-secondary btn-open-mockup" data-mockup="mockups/napne-digital-mockup.png" data-project-title="NAPNE Digital" data-project-subtitle="Prontuário eletrônico e sistema de acompanhamento multidisciplinar (IFMS Três Lagoas)" data-badge="DESTAQUE • EM PRODUÇÃO" data-neon="green">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                  Ver Mockup 3D
-                </button>
               </div>
             </div>
           </div>
@@ -1562,7 +1381,6 @@
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </div>
-                <span class="preview-hover-text">Visualizar Mockup 3D</span>
               </div>
             </div>
             <div class="project-body">
@@ -1601,10 +1419,6 @@
               </div>
               <div class="project-actions">
                 <a href="https://github.com/Caiokl3i/music-class" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Repositório GitHub &rarr;</a>
-                <button type="button" class="btn-card-secondary btn-open-mockup" data-mockup="mockups/music-class-mockup.png" data-project-title="Music Class" data-project-subtitle="Plataforma SaaS para Professores e Estúdios de Música" data-badge="SAAS • ESTÚDIO PARTICULAR" data-neon="cyan">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                  Ver Mockup 3D
-                </button>
               </div>
             </div>
           </div>
@@ -1620,7 +1434,6 @@
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </div>
-                <span class="preview-hover-text">Visualizar Mockup 3D</span>
               </div>
             </div>
             <div class="project-body">
@@ -1661,10 +1474,6 @@
               </div>
               <div class="project-actions">
                 <a href="https://github.com/Caiokl3i/Bingo-Online" target="_blank" rel="noopener noreferrer" class="btn-card-primary">Repositório GitHub &rarr;</a>
-                <button type="button" class="btn-card-secondary btn-open-mockup" data-mockup="mockups/bingo-online-mockup.png" data-project-title="Bingo Online" data-project-subtitle="Aplicação Fullstack multiplayer para gerenciamento e partidas de Bingo em tempo real" data-badge="MULTIPLAYER • FULLSTACK" data-neon="purple">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                  Ver Mockup 3D
-                </button>
               </div>
             </div>
           </div>
@@ -1674,113 +1483,39 @@
     </section>
 
 
-    <!-- FOOTER (SCREEN MOVIE STYLE CINEMATIC FOOTER) -->
-    <footer class="pro-footer">
-      <div class="container">
-        <!-- Floating Capsule Top Bar -->
-        <div class="footer-capsule-bar reveal-item">
-          <a href="index.html" class="footer-capsule-brand">
-            <span class="footer-capsule-icon">&lt;/&gt;</span>
-            <span>Caio Victor</span>
-          </a>
-          <div class="footer-capsule-links">
-            <a href="index.html#about">Sobre</a>
-            <a href="index.html#skills">Stack</a>
-            <a href="#showcase">Projetos</a>
-            <a href="index.html#experience">Trajetória</a>
-            <a href="index.html#contact">Contato</a>
-          </div>
-          <a href="index.html#contact" class="footer-capsule-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Fale Comigo
-          </a>
-        </div>
-
-        <!-- Main Multi-Column Grid -->
-        <div class="pro-footer-grid">
-          <!-- Column 1: Brand & Tagline -->
-          <div class="footer-brand-block reveal-item">
-            <a href="index.html" class="footer-brand-logo">
-              <span class="footer-logo-symbol">&lt;/&gt;</span>
-              <span>Caio Victor</span>
-            </a>
-            <h3 class="footer-brand-tagline">Desenvolvedor Backend &amp; Fullstack</h3>
-            <p class="footer-brand-desc">
-              Desenvolvendo arquiteturas sólidas, microsserviços, APIs de alta vazão e soluções escaláveis com foco em confiabilidade e performance.
-            </p>
-            <a href="index.html#contact" class="footer-white-pill-btn">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-              Fale Comigo
-            </a>
-            <p class="footer-copyright-line">&copy; 2026 Caio Victor. Todos os direitos reservados.</p>
-            <div class="footer-built-attribution">
-              <span>Desenvolvido com</span>
-              <span style="color: #ff7722;">⚡</span>
-              <span>por</span>
-              <img src="caio-avatar.jpg" alt="Caio Victor" class="footer-built-avatar" />
-              <strong>Caio Victor</strong>
-            </div>
-          </div>
-
-          <!-- Column 2: Menu Principal -->
-          <div class="footer-col reveal-item">
-            <h4 class="footer-col-title">Menu</h4>
-            <ul class="footer-links-list">
-              <li class="footer-link-item"><a href="index.html#hero">Início</a></li>
-              <li class="footer-link-item"><a href="index.html#about">Sobre Mim</a></li>
-              <li class="footer-link-item"><a href="index.html#skills">Competências</a></li>
-              <li class="footer-link-item"><a href="#showcase">Projetos</a></li>
-              <li class="footer-link-item"><a href="index.html#experience">Trajetória</a></li>
-              <li class="footer-link-item"><a href="index.html#contact">Contato</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 3: Projetos -->
-          <div class="footer-col reveal-item">
-            <h4 class="footer-col-title">Projetos</h4>
-            <ul class="footer-links-list">
-              <li class="footer-link-item"><a href="https://github.com/Caiokl3i/Napne-Digital" target="_blank" rel="noopener noreferrer">NAPNE Digital <span class="footer-badge-mini">IFMS</span></a></li>
-              <li class="footer-link-item"><a href="https://github.com/Caiokl3i/music-class" target="_blank" rel="noopener noreferrer">Music Class <span class="footer-badge-mini">SaaS</span></a></li>
-              <li class="footer-link-item"><a href="https://github.com/Caiokl3i/Bingo-Online" target="_blank" rel="noopener noreferrer">Bingo Online <span class="footer-badge-mini">Live</span></a></li>
-              <li class="footer-link-item"><a href="#showcase">Todos os 3 Projetos &uarr;</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 4: Conexões -->
-          <div class="footer-col reveal-item">
-            <h4 class="footer-col-title">Conexões</h4>
-            <ul class="footer-links-list">
-              <li class="footer-link-item"><a href="https://github.com/Caiokl3i" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-              <li class="footer-link-item"><a href="https://www.linkedin.com/in/caio-victor-santos-valentim" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li class="footer-link-item"><a href="https://wa.me/5567991583099" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-              <li class="footer-link-item"><a href="mailto:caio.victor.santos12@gmail.com">E-mail Direto</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 5: Stack & Tecnologias -->
-          <div class="footer-col reveal-item">
-            <h4 class="footer-col-title">Tecnologias</h4>
-            <ul class="footer-links-list">
-              <li class="footer-link-item"><a href="index.html#skills">Node.js &amp; TS</a></li>
-              <li class="footer-link-item"><a href="index.html#skills">Python &amp; FastAPI</a></li>
-              <li class="footer-link-item"><a href="index.html#skills">Docker &amp; Linux</a></li>
-              <li class="footer-link-item"><a href="index.html#skills">PostgreSQL &amp; Redis</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Giant Typography Watermark -->
-        <div class="footer-watermark-wrap">
-          <span class="footer-watermark-text">CAIO VICTOR</span>
-        </div>
+    <!-- FOOTER -->
+    <footer>
+      <!-- Background Dunes Art with Soft Shading & Ambient Glow -->
+      <div class="footer-dunes-art">
+        <img src="footer-dunes.jpg" alt="Neon Dunes Horizon" class="footer-dunes-img" loading="lazy" />
+        <div class="footer-dunes-shadow-top"></div>
+        <div class="footer-dunes-shadow-bottom"></div>
+        <div class="footer-dunes-ambient-glow"></div>
       </div>
 
-      <!-- Glowing Dunes Horizon Background Graphic -->
-      <div class="footer-dunes-art">
-        <img src="footer-dunes.jpg" alt="Neon sand dunes horizon" class="footer-dunes-img" loading="lazy" />
-        <div class="footer-dunes-ambient-glow"></div>
+      <!-- Subtle Typographic Watermark (Screen Movie Style) -->
+      <div class="footer-watermark-wrap">
+        <span class="footer-watermark-text">CAIO VICTOR</span>
+      </div>
+
+      <div class="container footer-container">
+        <div class="footer-info">
+          <div class="footer-author">Caio Victor Santos Valentim</div>
+          <div class="footer-role">Desenvolvedor Backend • Estudante de ADS (IFMS)</div>
+          <div class="copyright" style="margin-top: 4px;">
+            Construído com código, curiosidade e aprendizado contínuo.
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://github.com/Caiokl3i" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/caio-victor-santos-valentim" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+          <a href="mailto:caio.victor.santos12@gmail.com" class="footer-link">E-mail</a>
+        </div>
+
+        <div class="copyright">
+          &copy; 2026 Caio Victor. Todos os direitos reservados.
+        </div>
       </div>
     </footer>
 
