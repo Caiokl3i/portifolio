@@ -4,8 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'">
   <title>Caio Victor | Projetos &amp; Aplicações</title>
   <meta name="description" content="Projetos desenvolvidos por Caio Victor, desenvolvedor backend. Sistemas web, APIs, integrações e modelagem de banco de dados.">
+  <meta name="author" content="Caio Victor Santos Valentim">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Caio Victor | Projetos &amp; Aplicações">
+  <meta property="og:description" content="Projetos desenvolvidos por Caio Victor, desenvolvedor backend. Sistemas web, APIs, integrações e modelagem de banco de dados.">
+  <meta property="og:image" content="caio-avatar.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Caio Victor | Projetos &amp; Aplicações">
+  <meta name="twitter:description" content="Projetos desenvolvidos por Caio Victor, desenvolvedor backend. Sistemas web, APIs, integrações e modelagem de banco de dados.">
+  <meta name="twitter:image" content="caio-avatar.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -53,10 +65,9 @@
     /* Fixed Canvas Background using projects-jpg */
     #canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       display: block;
       z-index: 1;
       pointer-events: none;
@@ -67,10 +78,9 @@
     /* Softened Dark Overlay */
     .bg-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       z-index: 2;
       pointer-events: none;
       background:
@@ -117,6 +127,7 @@
       align-items: center;
       justify-content: space-between;
       height: 80px;
+      position: relative;
     }
 
     .logo {
@@ -215,7 +226,6 @@
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
     .reveal-item.is-revealed {
@@ -309,7 +319,7 @@
     }
 
     .section-title {
-      font-size: 3rem;
+      font-size: clamp(1.85rem, 5vw, 3rem);
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 24px;
@@ -362,6 +372,7 @@
       background: rgba(10, 10, 14, 0.65);
       border: 1px solid var(--glass-border);
       color: #ffffff;
+      min-height: 44px;
       padding: 10px 22px;
       border-radius: 30px;
       font-family: var(--font-mono);
@@ -489,6 +500,7 @@
       border: 1px solid var(--glass-border);
       border-radius: 20px;
       overflow: hidden;
+      cursor: pointer;
       transition: all 0.35s ease;
       display: flex;
       flex-direction: column;
@@ -879,8 +891,35 @@
     }
 
     @media (max-width: 992px) {
-      .section-title {
-        font-size: 2.25rem;
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 20px 20px;
+        background: rgba(7, 7, 9, 0.96);
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 8px;
+      }
+
+      header nav {
+        display: block;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
       }
     }
 
@@ -1256,13 +1295,128 @@
         gap: 10px;
       }
     }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      z-index: 200;
+      background: var(--primary-orange);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    header nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-left: auto;
+      margin-right: 12px;
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      background: rgba(12, 12, 18, 0.65);
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .nav-toggle-bars {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible {
+      outline: 2px solid var(--primary-orange-light);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      .btn-talk {
+        padding: 10px 14px;
+        font-size: 0.78rem;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .page-hero {
+        padding-top: 120px;
+        padding-bottom: 40px;
+      }
+
+      .filter-btn {
+        padding: 10px 14px;
+        font-size: 0.78rem;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal-item {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
   </style>
+  <noscript>
+    <style>
+      .reveal-item { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 
 <body>
 
   <!-- Canvas Fixed Background Scroll Animation using projects-jpg -->
-  <canvas id="canvas"></canvas>
+  <a class="skip-link" href="#showcase">Pular para o conteúdo</a>
+
+  <canvas id="canvas" aria-hidden="true"></canvas>
 
   <!-- Softened Contrast Gradient Overlay -->
   <div class="bg-overlay"></div>
@@ -1276,17 +1430,22 @@
         <a href="index.html" class="logo">
           <span>&lt;/&gt;</span> CAIO VICTOR
         </a>
-        <ul class="nav-links">
-          <li>
-            <a href="index.html" class="nav-back-link">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              Voltar ao Início
-            </a>
-          </li>
-        </ul>
+        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Abrir menu">
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <nav id="primaryNav" aria-label="Navegação da página">
+          <ul class="nav-links" id="navLinks">
+            <li>
+              <a href="index.html" class="nav-back-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Voltar ao Início
+              </a>
+            </li>
+          </ul>
+        </nav>
         <a href="index.html#contact" class="btn-talk">Fale Comigo</a>
       </div>
     </header>
@@ -1302,11 +1461,11 @@
 
         <!-- Category Filter Tabs -->
         <div class="filter-tabs reveal-item">
-          <button class="filter-btn active" onclick="filterProjects(event, 'all')">Todos os Projetos</button>
-          <button class="filter-btn" onclick="filterProjects(event, 'backend')">Backend &amp; APIs</button>
-          <button class="filter-btn" onclick="filterProjects(event, 'web-app')">Aplicações Web</button>
-          <button class="filter-btn" onclick="filterProjects(event, 'saas')">SaaS &amp; Gestão</button>
-          <button class="filter-btn" onclick="filterProjects(event, 'devops')">Multiplayer &amp; Docker</button>
+          <button type="button" class="filter-btn active" onclick="filterProjects(event, 'all')" aria-pressed="true">Todos os Projetos</button>
+          <button type="button" class="filter-btn" onclick="filterProjects(event, 'backend')" aria-pressed="false">Backend &amp; APIs</button>
+          <button type="button" class="filter-btn" onclick="filterProjects(event, 'web-app')" aria-pressed="false">Aplicações Web</button>
+          <button type="button" class="filter-btn" onclick="filterProjects(event, 'saas')" aria-pressed="false">SaaS &amp; Gestão</button>
+          <button type="button" class="filter-btn" onclick="filterProjects(event, 'devops')" aria-pressed="false">Multiplayer &amp; Docker</button>
         </div>
       </div>
     </section>
@@ -1317,10 +1476,10 @@
         <div class="projects-grid" id="projects-container">
 
           <!-- Project 1: NAPNE Digital -->
-          <div class="project-card reveal-item" data-category="backend web-app" data-mockup="mockups/napne-digital-mockup.png" data-project-title="NAPNE Digital" data-project-subtitle="Prontuário eletrônico e sistema de acompanhamento multidisciplinar (IFMS Três Lagoas)" data-badge="DESTAQUE • EM PRODUÇÃO" data-neon="green">
+          <div class="project-card reveal-item" data-category="backend web-app" data-mockup="mockups/napne-digital-mockup.png" data-project-title="NAPNE Digital" data-project-subtitle="Prontuário eletrônico e sistema de acompanhamento multidisciplinar (IFMS Três Lagoas)" data-badge="DESTAQUE • EM PRODUÇÃO" data-neon="green" role="button" tabindex="0" aria-label="Abrir visualização de NAPNE Digital">
             <div class="project-preview">
               <span class="preview-badge" style="border-color: rgba(39, 201, 63, 0.45); color: #38e454;">DESTAQUE • EM PRODUÇÃO</span>
-              <img src="screens/napne-digital.png" class="card-preview-thumb" alt="NAPNE Digital" loading="lazy" />
+              <img src="screens/napne-digital.png" class="card-preview-thumb" alt="NAPNE Digital" loading="lazy" width="1024" height="491" />
               <div class="preview-hover-overlay">
                 <div class="preview-hover-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1371,10 +1530,10 @@
           </div>
 
           <!-- Project 2: Music Class -->
-          <div class="project-card reveal-item" data-category="backend web-app saas" data-mockup="mockups/music-class-mockup.png" data-project-title="Music Class" data-project-subtitle="Plataforma SaaS para Professores e Estúdios de Música" data-badge="SAAS • ESTÚDIO PARTICULAR" data-neon="cyan">
+          <div class="project-card reveal-item" data-category="backend web-app saas" data-mockup="mockups/music-class-mockup.png" data-project-title="Music Class" data-project-subtitle="Plataforma SaaS para Professores e Estúdios de Música" data-badge="SAAS • ESTÚDIO PARTICULAR" data-neon="cyan" role="button" tabindex="0" aria-label="Abrir visualização de Music Class">
             <div class="project-preview">
               <span class="preview-badge" style="border-color: rgba(0, 225, 200, 0.45); color: #00e5d0;">SAAS • ESTÚDIO PARTICULAR</span>
-              <img src="screens/music-class.png" class="card-preview-thumb" alt="Music Class" loading="lazy" />
+              <img src="screens/music-class.png" class="card-preview-thumb" alt="Music Class" loading="lazy" width="1024" height="491" />
               <div class="preview-hover-overlay">
                 <div class="preview-hover-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1424,10 +1583,10 @@
           </div>
 
           <!-- Project 3: Bingo Online -->
-          <div class="project-card reveal-item" data-category="backend web-app devops" data-mockup="mockups/bingo-online-mockup.png" data-project-title="Bingo Online" data-project-subtitle="Aplicação Fullstack multiplayer para gerenciamento e partidas de Bingo em tempo real" data-badge="MULTIPLAYER • FULLSTACK" data-neon="purple">
+          <div class="project-card reveal-item" data-category="backend web-app devops" data-mockup="mockups/bingo-online-mockup.png" data-project-title="Bingo Online" data-project-subtitle="Aplicação Fullstack multiplayer para gerenciamento e partidas de Bingo em tempo real" data-badge="MULTIPLAYER • FULLSTACK" data-neon="purple" role="button" tabindex="0" aria-label="Abrir visualização de Bingo Online">
             <div class="project-preview">
               <span class="preview-badge" style="border-color: rgba(168, 85, 247, 0.45); color: #c084fc;">MULTIPLAYER • FULLSTACK</span>
-              <img src="screens/bingo-online.png" class="card-preview-thumb" alt="Bingo Online" loading="lazy" />
+              <img src="screens/bingo-online.png" class="card-preview-thumb" alt="Bingo Online" loading="lazy" width="1024" height="515" />
               <div class="preview-hover-overlay">
                 <div class="preview-hover-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1487,7 +1646,7 @@
     <footer>
       <!-- Background Dunes Art with Soft Shading & Ambient Glow -->
       <div class="footer-dunes-art">
-        <img src="footer-dunes.jpg" alt="Neon Dunes Horizon" class="footer-dunes-img" loading="lazy" />
+        <img src="footer-dunes.jpg" alt="" class="footer-dunes-img" loading="lazy" width="1376" height="768" />
         <div class="footer-dunes-shadow-top"></div>
         <div class="footer-dunes-shadow-bottom"></div>
         <div class="footer-dunes-ambient-glow"></div>
@@ -1555,7 +1714,7 @@
 
         <!-- Elemento Flutuante que inclina seguindo o mouse -->
         <div class="mockup-floating-card" id="mockupFloatingCard">
-          <img id="modalMockupImg" class="mockup-device-img" src="mockups/napne-digital-mockup.png" alt="Mockup responsivo em múltiplos dispositivos" />
+          <img id="modalMockupImg" class="mockup-device-img" src="mockups/napne-digital-mockup.png" alt="Mockup responsivo em múltiplos dispositivos" width="1024" height="682" />
         </div>
       </div>
 
@@ -1580,8 +1739,11 @@
     });
 
     const TOTAL_FRAMES = 150;
+    const FRAME_WINDOW = 14;
     const images = new Array(TOTAL_FRAMES + 1);
     const loadedStatus = new Array(TOTAL_FRAMES + 1).fill(false);
+    const loadingStatus = new Array(TOTAL_FRAMES + 1).fill(false);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let targetFrame = 1;
     let currentFrame = 1;
@@ -1592,7 +1754,7 @@
     const ctx = canvas.getContext('2d');
 
     function resize() {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(window.innerWidth * dpr);
       canvas.height = Math.floor(window.innerHeight * dpr);
       lastRenderedIndex = -1;
@@ -1652,6 +1814,8 @@
 
     function tick() {
       calculateTargetFrame();
+      ensureFramesAround(currentFrame);
+      ensureFramesAround(targetFrame);
 
       const diff = targetFrame - currentFrame;
       if (Math.abs(diff) > 0.001) {
@@ -1669,22 +1833,43 @@
       requestAnimationFrame(tick);
     }
 
+    function loadFrame(index) {
+      if (index < 1 || index > TOTAL_FRAMES || loadedStatus[index] || loadingStatus[index]) return;
+      loadingStatus[index] = true;
+      const img = new Image();
+      img.src = getFramePath(index);
+      img.onload = () => {
+        images[index] = img;
+        loadedStatus[index] = true;
+        loadingStatus[index] = false;
+        if (Math.round(currentFrame) === index) {
+          drawCurrentFrame();
+        }
+      };
+      img.onerror = () => {
+        loadingStatus[index] = false;
+        if (index === 1) {
+          console.error('Error loading frame 1:', getFramePath(1));
+        }
+      };
+    }
+
+    function ensureFramesAround(frameValue) {
+      const center = Math.round(frameValue);
+      const start = Math.max(1, center - FRAME_WINDOW);
+      const end = Math.min(TOTAL_FRAMES, center + FRAME_WINDOW);
+      for (let i = start; i <= end; i++) {
+        loadFrame(i);
+      }
+    }
+
     // Load Frame 1 FIRST and render immediately
     function init() {
       resize();
-
-      const frame1 = new Image();
-      frame1.src = getFramePath(1);
-      frame1.onload = () => {
-        images[1] = frame1;
-        loadedStatus[1] = true;
-        drawCurrentFrame();
-
-        loadAllRemainingFrames();
-      };
-      frame1.onerror = (e) => {
-        console.error("Error loading frame 1:", getFramePath(1), e);
-      };
+      loadFrame(1);
+      if (!prefersReducedMotion) {
+        ensureFramesAround(1);
+      }
 
       // Header scroll effect
       const header = document.querySelector('header');
@@ -1697,28 +1882,23 @@
       });
     }
 
-    function loadAllRemainingFrames() {
-      for (let i = 2; i <= TOTAL_FRAMES; i++) {
-        const img = new Image();
-        img.src = getFramePath(i);
-        img.onload = () => {
-          images[i] = img;
-          loadedStatus[i] = true;
-          if (Math.round(currentFrame) === i) {
-            drawCurrentFrame();
-          }
-        };
-      }
+    // Project Category Filtering Logic
+    function isSafeMockupPath(path) {
+      return typeof path === 'string' && /^(?:\.\/)?mockups\/[A-Za-z0-9._-]+\.(?:png|jpe?g|webp)$/i.test(path);
     }
 
-    // Project Category Filtering Logic
     function filterProjects(e, category) {
+      const allowedCategories = ['all', 'backend', 'web-app', 'saas', 'devops'];
+      if (!allowedCategories.includes(category)) return;
       const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      if (e && e.currentTarget) {
-        e.currentTarget.classList.add('active');
-      } else if (e && e.target) {
-        e.target.classList.add('active');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      const activeBtn = (e && e.currentTarget) || (e && e.target);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('aria-pressed', 'true');
       }
 
       const cards = document.querySelectorAll('.project-card');
@@ -1842,6 +2022,7 @@
     }
 
     function createOrangeSparks(target, event) {
+      if (prefersReducedMotion) return;
       const rect = target.getBoundingClientRect();
       const sparkCount = 6;
       
@@ -1892,9 +2073,37 @@
 
     // Event listeners
     window.addEventListener('resize', resize);
-    window.addEventListener('scroll', calculateTargetFrame, { passive: true });
-    window.addEventListener('wheel', calculateTargetFrame, { passive: true });
-    window.addEventListener('touchmove', calculateTargetFrame, { passive: true });
+
+    function initMobileNav() {
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+
+      function setOpen(isOpen) {
+        links.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      }
+
+      toggle.addEventListener('click', () => {
+        setOpen(!links.classList.contains('is-open'));
+      });
+
+      links.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && links.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 992) setOpen(false);
+      });
+    }
 
     // -------------------------------------------------------------
     // INTERACTIVE 3D FLOATING MOCKUP MODAL SYSTEM (NEON + LERP PARALLAX)
@@ -1922,9 +2131,10 @@
       let currentMoveX = 0;
       let currentMoveY = 0;
       let rafId = null;
+      let lastFocused = null;
 
       function openModal(data) {
-        if (!data || !data.mockup) return;
+        if (!data || !isSafeMockupPath(data.mockup)) return;
 
         imgEl.src = data.mockup;
         imgEl.alt = data.title || 'Mockup do Projeto';
@@ -1960,8 +2170,14 @@
         }
 
         // Tech pills
-        if (techPillsEl && data.tags && data.tags.length > 0) {
-          techPillsEl.innerHTML = data.tags.map(t => `<span class="tag-badge">${t}</span>`).join('');
+        if (techPillsEl) {
+          techPillsEl.replaceChildren();
+          (data.tags || []).forEach((tag) => {
+            const pill = document.createElement('span');
+            pill.className = 'tag-badge';
+            pill.textContent = tag;
+            techPillsEl.appendChild(pill);
+          });
         }
 
         // Reset Physics
@@ -1975,13 +2191,19 @@
           floatingCard.style.transform = 'translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
         }
 
+        lastFocused = document.activeElement;
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         isOpen = true;
+        requestAnimationFrame(() => {
+          if (closeBtn) closeBtn.focus();
+        });
 
         cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(animatePhysics);
+        if (!prefersReducedMotion) {
+          rafId = requestAnimationFrame(animatePhysics);
+        }
       }
 
       function closeModal() {
@@ -1991,6 +2213,9 @@
         document.body.style.overflow = '';
         isOpen = false;
         cancelAnimationFrame(rafId);
+        if (lastFocused && typeof lastFocused.focus === 'function') {
+          lastFocused.focus();
+        }
       }
 
       function animatePhysics() {
@@ -2034,6 +2259,17 @@
       window.addEventListener('mousemove', handlePointerMove, { passive: true });
       window.addEventListener('touchmove', handlePointerMove, { passive: true });
 
+      function openFromCard(card) {
+        const mockup = card.getAttribute('data-mockup');
+        if (!mockup) return;
+        const title = card.getAttribute('data-project-title') || card.querySelector('.project-name')?.textContent || '';
+        const subtitle = card.getAttribute('data-project-subtitle') || card.querySelector('.project-summary')?.textContent || '';
+        const badge = card.getAttribute('data-badge') || card.querySelector('.preview-badge')?.textContent || '';
+        const neon = card.getAttribute('data-neon') || 'green';
+        const tags = Array.from(card.querySelectorAll('.project-tags .tag-badge')).map(el => el.textContent.trim());
+        openModal({ mockup, title, subtitle, badge, neon, tags });
+      }
+
       // Click on cards with data-mockup
       document.querySelectorAll('.project-card[data-mockup]').forEach(card => {
         card.addEventListener('click', (e) => {
@@ -2042,17 +2278,14 @@
             return;
           }
 
-          const mockup = card.getAttribute('data-mockup');
-          if (!mockup) return;
-
           e.preventDefault();
-          const title = card.getAttribute('data-project-title') || card.querySelector('.project-name')?.textContent || '';
-          const subtitle = card.getAttribute('data-project-subtitle') || card.querySelector('.project-summary')?.textContent || '';
-          const badge = card.getAttribute('data-badge') || card.querySelector('.preview-badge')?.textContent || '';
-          const neon = card.getAttribute('data-neon') || 'green';
-          const tags = Array.from(card.querySelectorAll('.project-tags .tag-badge')).map(el => el.textContent.trim());
-
-          openModal({ mockup, title, subtitle, badge, neon, tags });
+          openFromCard(card);
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          if (e.target.closest('a')) return;
+          e.preventDefault();
+          openFromCard(card);
         });
       });
 
@@ -2077,8 +2310,23 @@
       if (backdrop) backdrop.addEventListener('click', closeModal);
 
       window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) {
+        if (!isOpen) return;
+        if (e.key === 'Escape') {
           closeModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
         }
       });
     }
@@ -2086,9 +2334,12 @@
     // Launch
     init();
     initScrollReveal();
+    initMobileNav();
     initRandomOrangeWordEffects();
     initMockupModalSystem();
-    requestAnimationFrame(tick);
+    if (!prefersReducedMotion) {
+      requestAnimationFrame(tick);
+    }
   </script>
 </body>
 
